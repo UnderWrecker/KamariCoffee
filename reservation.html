@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reservations & Contact | L'Aura</title>
+    <meta name="description" content="Book a table at L'Aura Café and find our location.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .page-header {
+            padding-top: 12rem;
+            padding-bottom: 2rem;
+            text-align: center;
+        }
+
+        #reservation-wrap {
+            background: linear-gradient(rgba(13, 12, 12, 0.95), rgba(13, 12, 12, 0.95)), url('https://images.unsplash.com/photo-1497935586351-b67a49e012bf?q=80&w=2071&auto=format&fit=crop') center/cover fixed;
+            padding: 4rem 5% 8rem;
+        }
+
+        .reservation-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 4rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Form Side */
+        .reservation-container {
+            background: var(--color-glass);
+            padding: 4rem;
+            border-radius: 4px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        }
+
+        .reservation-form {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        .form-group { display: flex; flex-direction: column; }
+        .form-group.full-width { grid-column: 1 / -1; }
+
+        label {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 0.5rem;
+            color: #aaa;
+        }
+
+        input, select, textarea {
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 1rem;
+            color: var(--color-text);
+            font-family: var(--font-body);
+            border-radius: 2px;
+            transition: var(--transition);
+            outline: none;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            border-color: var(--color-accent);
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+        textarea { resize: vertical; min-height: 100px; }
+        .btn-submit { margin-top: 1rem; width: 100%; }
+
+        /* Contact & Map Side */
+        .contact-info-container {
+            padding: 2rem 0;
+        }
+
+        .contact-header {
+            font-size: 2rem;
+            color: var(--color-accent);
+            margin-bottom: 2rem;
+        }
+
+        .contact-detail {
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-label {
+            display: block;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #888;
+            margin-bottom: 0.3rem;
+        }
+
+        .contact-value {
+            font-size: 1.1rem;
+            color: var(--color-text);
+        }
+
+        .map-container {
+            margin-top: 3rem;
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 4px;
+            overflow: hidden;
+            height: 250px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+        
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        @media (max-width: 992px) {
+            .reservation-grid { grid-template-columns: 1fr; }
+            .contact-info-container { order: -1; text-align: center; }
+            .map-container { height: 300px; }
+        }
+        
+        @media (max-width: 768px) {
+            .reservation-form { grid-template-columns: 1fr; }
+            .reservation-container { padding: 2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav id="navbar">
+        <a href="index.html" class="logo">L'Aura</a>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="menu.html">Menu</a>
+            <a href="reservation.html" class="active">Reservations</a>
+        </div>
+    </nav>
+
+    <div id="reservation-wrap">
+        <div class="page-header reveal">
+            <span class="section-subtitle">Experience L'Aura</span>
+            <h1 class="section-title">Join Us</h1>
+        </div>
+        
+        <div class="reservation-grid">
+            <div class="reservation-container reveal">
+                <form class="reservation-form" id="resForm">
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" required placeholder="John Doe">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" required placeholder="john@example.com">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="date">Date</label>
+                        <input type="date" id="date" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="time">Time</label>
+                        <input type="time" id="time" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="guests">Number of Guests</label>
+                        <select id="guests" required>
+                            <option value="1">1 Person</option>
+                            <option value="2" selected>2 People</option>
+                            <option value="3">3 People</option>
+                            <option value="4">4 People</option>
+                            <option value="5+">5+ People</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group full-width">
+                        <label for="notes">Special Requests</label>
+                        <textarea id="notes" placeholder="Any dietary restrictions or special occasions?"></textarea>
+                    </div>
+                    
+                    <div class="form-group full-width">
+                        <button type="submit" class="btn btn-submit">Confirm Reservation</button>
+                    </div>
+                </form>
+            </div>
+            
+            <div class="contact-info-container reveal">
+                <h3 class="contact-header">Visit Our Store</h3>
+                
+                <div class="contact-detail">
+                    <span class="contact-label">Address</span>
+                    <span class="contact-value">1284 Artisanal Ave, Suite 101<br>New York, NY 10012</span>
+                </div>
+                
+                <div class="contact-detail">
+                    <span class="contact-label">Phone</span>
+                    <span class="contact-value">+1 (212) 555-0198</span>
+                </div>
+                
+                <div class="contact-detail">
+                    <span class="contact-label">Email</span>
+                    <span class="contact-value">hello@lauracafe.com</span>
+                </div>
+                
+                <div class="contact-detail">
+                    <span class="contact-label">Hours</span>
+                    <span class="contact-value">Mon - Fri: 7:00 AM - 6:00 PM<br>Sat - Sun: 8:00 AM - 5:00 PM</span>
+                </div>
+
+                <div class="map-container">
+                    <!-- Fictional map using a generic embed -->
+                    <iframe src="https://maps.google.com/maps?q=SoHo,%20New%20York&t=&z=14&ie=UTF8&iwloc=&output=embed" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-logo">L'Aura</div>
+        <div class="social-links">
+            <a href="https://www.instagram.com/chinsusea/" target="_blank">Instagram</a>
+            <a href="https://twitter.com/L_Aura_Cafe" target="_blank">Twitter</a>
+            <a href="https://www.facebook.com/suraseachin/?locale=th_TH" target="_blank">Facebook</a>
+        </div>
+        <p class="copyright">&copy; 2026 L'Aura Café & Roastery. All Rights Reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Form submission prevention for demo
+        document.getElementById('resForm')?.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const btn = this.querySelector('.btn-submit');
+            const originalText = btn.innerText;
+            btn.innerText = 'Request Sent!';
+            btn.style.background = 'var(--color-accent)';
+            btn.style.color = 'var(--color-bg)';
+            
+            setTimeout(() => {
+                btn.innerText = originalText;
+                btn.style.background = 'transparent';
+                btn.style.color = 'var(--color-accent)';
+                this.reset();
+            }, 3000);
+        });
+    </script>
+</body>
+</html>

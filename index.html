@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>L'Aura | Premium Café & Roastery</title>
+    <meta name="description" content="Experience the finest artisanal coffee and delicate pastries at L'Aura Café.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Hero Section */
+        #hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://images.unsplash.com/photo-1554118811-1e0d58224f24?q=80&w=2047&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            z-index: -2;
+            transform: scale(1.05);
+            animation: slowZoom 20s infinite alternate;
+        }
+
+        @keyframes slowZoom {
+            from { transform: scale(1); }
+            to { transform: scale(1.1); }
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(13, 12, 12, 0.5) 0%, rgba(13, 12, 12, 1) 100%);
+            z-index: -1;
+        }
+
+        .hero-content {
+            text-align: center;
+            max-width: 800px;
+            padding: 0 2rem;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeUp 1s 0.5s forwards ease-out;
+        }
+
+        @keyframes fadeUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-subtitle {
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            color: var(--color-accent);
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+
+        .hero-title {
+            font-size: 5rem;
+            line-height: 1.1;
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        /* Home Sections */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .img-wrapper {
+            position: relative;
+            border-radius: 4px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+        }
+
+        .img-wrapper img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: var(--transition);
+        }
+        
+        .img-wrapper:hover img {
+            transform: scale(1.05);
+        }
+
+        .text-content p {
+            margin-bottom: 1.5rem;
+            color: #aaa;
+            font-size: 1.1rem;
+        }
+
+        .signature {
+            font-family: var(--font-heading);
+            font-style: italic;
+            font-size: 2rem;
+            color: var(--color-accent);
+            margin-top: 2rem;
+        }
+
+        /* Testimonials */
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .testimonial-card {
+            background: rgba(255, 255, 255, 0.03);
+            padding: 3rem 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 4px;
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(212, 175, 55, 0.3);
+        }
+
+        .stars {
+            color: var(--color-accent);
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .quote {
+            font-style: italic;
+            margin-bottom: 2rem;
+            color: #ddd;
+        }
+
+        .customer-name {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--color-accent);
+        }
+
+        @media (max-width: 768px) {
+            .grid-2 { grid-template-columns: 1fr; }
+            .hero-title { font-size: 3.5rem; }
+            .order-reverse { order: -1; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav id="navbar">
+        <a href="index.html" class="logo">L'Aura</a>
+        <div class="nav-links">
+            <a href="index.html" class="active">Home</a>
+            <a href="menu.html">Menu</a>
+            <a href="reservation.html">Reservations</a>
+        </div>
+    </nav>
+
+    <section id="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <span class="hero-subtitle">Artisanal Coffee & Roastery</span>
+            <h1 class="hero-title">Awaken Your<br>Senses.</h1>
+            <a href="menu.html" class="btn">Explore Our Menu</a>
+        </div>
+    </section>
+
+    <section id="ceo-message">
+        <div class="grid-2 reveal">
+            <div class="text-content">
+                <span class="section-subtitle">From the Founder</span>
+                <h2 class="section-title">A Passion for Perfection</h2>
+                <p>"When I opened L'Aura, my vision was simple: to create a sanctuary where time slows down, and every sip tells a story. We don't just roast coffee; we curate an experience that honors the journey of the bean from the highlands to your cup."</p>
+                <p>Every pastry is crafted with imported French butter, and every shot of espresso is pulled with absolute precision. We invite you to step away from the noise of the world and indulge in true craftsmanship.</p>
+                <div class="signature">Eleanor Vance</div>
+            </div>
+            <div class="img-wrapper">
+                <img src="https://images.unsplash.com/photo-1511920170033-f8396924c348?q=80&w=1974&auto=format&fit=crop" alt="Coffee Pour">
+            </div>
+        </div>
+    </section>
+
+    <section id="history" style="background-color: var(--color-secondary);">
+        <div class="grid-2 reveal">
+            <div class="img-wrapper order-reverse">
+                <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?q=80&w=1974&auto=format&fit=crop" alt="Coffee Roaster">
+            </div>
+            <div class="text-content">
+                <span class="section-subtitle">Our Story</span>
+                <h2 class="section-title">Rooted in Tradition</h2>
+                <p>Established in 2012 in a small brick alleyway, L'Aura began as a humble micro-roastery. Our obsession with sourcing only the top 1% of specialty grade Arabica beans quickly drew a devoted following.</p>
+                <p>Over the years, we've expanded our footprint, yet our core philosophy remains unchanged. We roast in small batches, build direct relationships with farmers, and continually push the boundaries of modern coffee culture.</p>
+                <a href="menu.html" class="btn mt-2">See What We Serve</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="testimonials">
+        <div class="section-header reveal">
+            <span class="section-subtitle">The Experience</span>
+            <h2 class="section-title">Words from Our Guests</h2>
+        </div>
+        
+        <div class="testimonial-grid">
+            <div class="testimonial-card reveal">
+                <div class="stars">★★★★★</div>
+                <p class="quote">"Absolutely the best pour-over I've had in the city. The atmosphere is incredibly sophisticated yet warm. The Geisha varietal was life-changing."</p>
+                <span class="customer-name">James Arlington</span>
+            </div>
+            <div class="testimonial-card reveal">
+                <div class="stars">★★★★★</div>
+                <p class="quote">"An oasis of calm. The almond financiers pair perfectly with their cortado. It's my go-to spot for Sunday mornings when I want to feel truly pampered."</p>
+                <span class="customer-name">Sophie Laurent</span>
+            </div>
+            <div class="testimonial-card reveal">
+                <div class="stars">★★★★★</div>
+                <p class="quote">"From the gorgeous interior design to the meticulously crafted drinks, L'Aura hits every mark. You can taste the dedication in every single cup."</p>
+                <span class="customer-name">Marcus Reed</span>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-logo">L'Aura</div>
+        <div class="social-links">
+            <a href="https://www.instagram.com/chinsusea/" target="_blank">Instagram</a>
+            <a href="https://twitter.com/L_Aura_Cafe" target="_blank">Twitter</a>
+            <a href="https://www.facebook.com/suraseachin/?locale=th_TH" target="_blank">Facebook</a>
+        </div>
+        <p class="copyright">&copy; 2026 L'Aura Café & Roastery. All Rights Reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
