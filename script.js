@@ -129,6 +129,7 @@ if (modal && closeBtn && menuItems.length) {
     menuItems.forEach(item => {
         item.addEventListener('click', function () {
             document.getElementById('modal-title').innerText     = this.querySelector('.menu-item-title').innerText;
+            document.getElementById('modal-image').src           = this.getAttribute('data-image') || '';
             document.getElementById('modal-calories').innerText  = this.getAttribute('data-calories')  || '—';
             document.getElementById('modal-macros').innerText    = this.getAttribute('data-macros')    || '—';
             document.getElementById('modal-allergens').innerText = this.getAttribute('data-allergens') || 'None';
