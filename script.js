@@ -1,121 +1,141 @@
-// Navbar effect on scroll
+// ── Lucide Icons ────────────────────────────────────────────────────────
+document.addEventListener('DOMContentLoaded', () => {
+    if (typeof lucide !== 'undefined') lucide.createIcons();
+});
+
+// ── AOS Scroll Animations ────────────────────────────────────────────────
+if (typeof AOS !== 'undefined') {
+    AOS.init({ duration: 900, once: true, easing: 'ease-out-cubic', offset: 60 });
+}
+
+// ── Navbar shrink on scroll ──────────────────────────────────────────────
 const navbar = document.getElementById('navbar');
 if (navbar) {
     window.addEventListener('scroll', () => {
         if (window.scrollY > 50) {
             navbar.style.padding = '1rem 5%';
-            navbar.style.background = 'rgba(13, 12, 12, 0.95)';
+            navbar.style.background = 'rgba(13, 12, 12, 0.98)';
         } else {
             navbar.style.padding = '1.5rem 5%';
-            navbar.style.background = 'rgba(13, 12, 12, 0.8)';
+            navbar.style.background = 'rgba(13, 12, 12, 0.80)';
+        }
+    }, { passive: true });
+}
+
+// ── Mobile menu toggle ───────────────────────────────────────────────────
+const mobileToggle = document.getElementById('mobileToggle');
+const navLinks = document.querySelector('.nav-links');
+if (mobileToggle && navLinks) {
+    mobileToggle.addEventListener('click', () => {
+        const open = navLinks.classList.toggle('open');
+        const icon = mobileToggle.querySelector('[data-lucide]');
+        if (icon && typeof lucide !== 'undefined') {
+            icon.setAttribute('data-lucide', open ? 'x' : 'menu');
+            lucide.createIcons();
         }
     });
 }
 
-// Scroll reveal animation
-function reveal() {
-    var reveals = document.querySelectorAll(".reveal");
-    for (var i = 0; i < reveals.length; i++) {
-        var windowHeight = window.innerHeight;
-        var elementTop = reveals[i].getBoundingClientRect().top;
-        var elementVisible = 100;
-        if (elementTop < windowHeight - elementVisible) {
-            reveals[i].classList.add("active");
-        }
-    }
+// ── Testimonial Swiper (index.html) ─────────────────────────────────────
+// FIX: loop: false + rewind: true prevents Swiper from cloning slides,
+// which would cause pagination dot count to mismatch the actual slide count.
+// With 10 slides you always get exactly 10 dots.
+if (document.querySelector('.testimonial-swiper') && typeof Swiper !== 'undefined') {
+    new Swiper('.testimonial-swiper', {
+        effect: 'coverflow',
+        grabCursor: true,
+        centeredSlides: true,
+        slidesPerView: 'auto',
+        loop: false,
+        rewind: true,
+        coverflowEffect: {
+            rotate: 20,
+            stretch: 0,
+            depth: 120,
+            modifier: 1,
+            slideShadows: true,
+        },
+        autoplay: {
+            delay: 4500,
+            disableOnInteraction: false,
+            pauseOnMouseEnter: true,
+        },
+        pagination: {
+            el: '.testimonial-swiper .swiper-pagination',
+            clickable: true,
+            dynamicBullets: true,   // shows compact sliding dots — readable at 10 slides
+        },
+        navigation: {
+            nextEl: '.testimonial-swiper .swiper-button-next',
+            prevEl: '.testimonial-swiper .swiper-button-prev',
+        },
+    });
 }
-window.addEventListener("scroll", reveal);
-reveal(); // Trigger on load
 
-// Menu modal logic
-const modal = document.getElementById('nutrition-modal');
+// ── Gallery Swiper (reservation.html) ───────────────────────────────────
+if (document.querySelector('.gallery-swiper') && typeof Swiper !== 'undefined') {
+    let thumbsSwiper = null;
+    if (document.querySelector('.gallery-thumbs')) {
+        thumbsSwiper = new Swiper('.gallery-thumbs', {
+            spaceBetween: 10,
+            slidesPerView: 4,
+            freeMode: true,
+            watchSlidesProgress: true,
+        });
+    }
+    new Swiper('.gallery-swiper', {
+        effect: 'fade',
+        loop: true,
+        autoplay: { delay: 3500, disableOnInteraction: false },
+        pagination: { el: '.gallery-swiper .swiper-pagination', clickable: true },
+        navigation: {
+            nextEl: '.gallery-swiper .swiper-button-next',
+            prevEl: '.gallery-swiper .swiper-button-prev',
+        },
+        thumbs: thumbsSwiper ? { swiper: thumbsSwiper } : undefined,
+    });
+}
+
+// ── Flatpickr (reservation.html) ────────────────────────────────────────
+if (typeof flatpickr !== 'undefined') {
+    const dateEl = document.getElementById('visit-date');
+    const timeEl = document.getElementById('visit-time');
+    if (dateEl) flatpickr(dateEl, {
+        minDate: 'today',
+        dateFormat: 'D, M j, Y',
+        disableMobile: true,
+    });
+    if (timeEl) flatpickr(timeEl, {
+        enableTime: true,
+        noCalendar: true,
+        dateFormat: 'h:i K',
+        minTime: '07:00',
+        maxTime: '17:00',
+        minuteIncrement: 30,
+        disableMobile: true,
+    });
+}
+
+// ── Nutrition Modal (menu.html) ──────────────────────────────────────────
+const modal    = document.getElementById('nutrition-modal');
 const closeBtn = document.querySelector('.close-modal');
 const menuItems = document.querySelectorAll('.menu-item.clickable');
 
-if (modal && closeBtn && menuItems) {
+if (modal && closeBtn && menuItems.length) {
     menuItems.forEach(item => {
-        item.addEventListener('click', function() {
-            // Populate modal with item data (mock implementation)
-            const title = this.querySelector('.menu-item-title').innerText;
-            const calories = this.getAttribute('data-calories') || '250 kcal';
-            const macros = this.getAttribute('data-macros') || '10g P / 35g C / 8g F';
-            const allergens = this.getAttribute('data-allergens') || 'None';
-            
-            document.getElementById('modal-title').innerText = title;
-            document.getElementById('modal-calories').innerText = calories;
-            document.getElementById('modal-macros').innerText = macros;
-            document.getElementById('modal-allergens').innerText = allergens;
-            
+        item.addEventListener('click', function () {
+            document.getElementById('modal-title').innerText     = this.querySelector('.menu-item-title').innerText;
+            document.getElementById('modal-calories').innerText  = this.getAttribute('data-calories')  || '—';
+            document.getElementById('modal-macros').innerText    = this.getAttribute('data-macros')    || '—';
+            document.getElementById('modal-allergens').innerText = this.getAttribute('data-allergens') || 'None';
             modal.style.display = 'flex';
-            // Slight delay to allow display flex to apply before opacity transition
-            setTimeout(() => {
-                modal.classList.add('show');
-            }, 10);
+            setTimeout(() => modal.classList.add('show'), 10);
         });
     });
-
-    closeBtn.addEventListener('click', () => {
+    const closeModal = () => {
         modal.classList.remove('show');
-        setTimeout(() => {
-            modal.style.display = 'none';
-        }, 400); // Wait for transition
-    });
-
-    window.addEventListener('click', (e) => {
-        if (e.target == modal) {
-            modal.classList.remove('show');
-            setTimeout(() => {
-                modal.style.display = 'none';
-            }, 400);
-        }
-    });
+        setTimeout(() => modal.style.display = 'none', 400);
+    };
+    closeBtn.addEventListener('click', closeModal);
+    window.addEventListener('click', e => { if (e.target === modal) closeModal(); });
 }
-
-// Testimonial Carousel
-(function () {
-    const track = document.getElementById('testimonialTrack');
-    const prevBtn = document.getElementById('prevBtn');
-    const nextBtn = document.getElementById('nextBtn');
-    const dotsWrap = document.getElementById('carouselDots');
-    if (!track || !prevBtn || !nextBtn || !dotsWrap) return;
-
-    const CARD_WIDTH = 300 + 24; // card flex-basis + gap
-    const cards = track.querySelectorAll('.testimonial-card');
-    const total = cards.length;
-    let current = 0;
-
-    // Build dots
-    cards.forEach((_, i) => {
-        const dot = document.createElement('div');
-        dot.className = 'carousel-dot' + (i === 0 ? ' active' : '');
-        dot.addEventListener('click', () => goTo(i));
-        dotsWrap.appendChild(dot);
-    });
-
-    function updateDots() {
-        dotsWrap.querySelectorAll('.carousel-dot').forEach((d, i) =>
-            d.classList.toggle('active', i === current));
-    }
-
-    function goTo(index) {
-        current = Math.max(0, Math.min(index, total - 1));
-        track.scrollTo({ left: current * CARD_WIDTH, behavior: 'smooth' });
-        updateDots();
-    }
-
-    prevBtn.addEventListener('click', () => goTo(current - 1));
-    nextBtn.addEventListener('click', () => goTo(current + 1));
-
-    // Sync dots on manual swipe / drag
-    track.addEventListener('scroll', () => {
-        current = Math.round(track.scrollLeft / CARD_WIDTH);
-        updateDots();
-    }, { passive: true });
-
-    // Auto-scroll every 4 seconds
-    let timer = setInterval(() => goTo((current + 1) % total), 4000);
-    track.addEventListener('mouseenter', () => clearInterval(timer));
-    track.addEventListener('mouseleave', () => {
-        timer = setInterval(() => goTo((current + 1) % total), 4000);
-    });
-})();

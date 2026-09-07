@@ -199,3 +199,235 @@ footer {
 .text-center { text-align: center; }
 .mt-2 { margin-top: 2rem; }
 .mb-2 { margin-bottom: 2rem; }
+
+/* ══════════════════════════════════════════════════════
+   Library Overrides & Extensions
+   ══════════════════════════════════════════════════════ */
+
+/* ── Mobile Nav ────────────────────────────────────────── */
+#mobileToggle {
+    display: none;
+    background: transparent;
+    border: none;
+    color: var(--color-text);
+    cursor: pointer;
+    padding: 0.3rem;
+    align-items: center;
+}
+
+@media (max-width: 768px) {
+    #mobileToggle { display: flex; }
+    .nav-links {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: rgba(13, 12, 12, 0.98);
+        flex-direction: column;
+        padding: 1.5rem 5%;
+        gap: 1.5rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.05);
+        backdrop-filter: blur(12px);
+    }
+    .nav-links.open { display: flex; }
+}
+
+/* ── Lucide Icons ──────────────────────────────────────── */
+.lucide, [data-lucide] { display: inline-block; vertical-align: middle; }
+.icon-sm  { width: 16px; height: 16px; }
+.icon-md  { width: 20px; height: 20px; }
+.icon-lg  { width: 24px; height: 24px; }
+.icon-xl  { width: 32px; height: 32px; }
+.icon-gold { color: var(--color-accent); }
+
+.section-icon {
+    display: inline-flex;
+    align-items: center;
+    color: var(--color-accent);
+    margin-bottom: 0.75rem;
+    opacity: 0.65;
+}
+.section-icon svg { width: 28px; height: 28px; }
+
+/* ── Testimonial Swiper ────────────────────────────────── */
+.testimonial-swiper {
+    width: 100%;
+    padding: 2rem 0 5rem !important;
+}
+.testimonial-swiper .swiper-slide { width: 300px; height: auto; }
+
+.testimonial-swiper .swiper-button-next,
+.testimonial-swiper .swiper-button-prev { color: var(--color-accent); }
+.testimonial-swiper .swiper-button-next::after,
+.testimonial-swiper .swiper-button-prev::after { font-size: 1.2rem; }
+
+.testimonial-swiper .swiper-pagination-bullet {
+    background: #555;
+    opacity: 1;
+    transition: all 0.3s ease;
+}
+.testimonial-swiper .swiper-pagination-bullet-active { background: var(--color-accent); }
+.testimonial-swiper .swiper-pagination-bullet-active-main {
+    background: var(--color-accent);
+    transform: scale(1.4);
+}
+
+/* ── Gallery Swiper ────────────────────────────────────── */
+.gallery-swiper {
+    width: 100%;
+    height: 420px;
+    border-radius: 4px;
+    overflow: hidden;
+    border: 1px solid rgba(212, 175, 55, 0.12);
+    position: relative;
+}
+.gallery-swiper .swiper-slide img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.gallery-swiper .swiper-button-next,
+.gallery-swiper .swiper-button-prev {
+    color: var(--color-accent);
+    background: rgba(13, 12, 12, 0.65);
+    width: 40px;
+    height: 40px;
+    border-radius: 2px;
+    backdrop-filter: blur(4px);
+}
+.gallery-swiper .swiper-button-next::after,
+.gallery-swiper .swiper-button-prev::after { font-size: 0.95rem; }
+
+.gallery-swiper .swiper-pagination-bullet { background: rgba(255,255,255,0.45); opacity: 1; }
+.gallery-swiper .swiper-pagination-bullet-active { background: var(--color-accent); }
+
+.gallery-slide-caption {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    padding: 3rem 1.5rem 1rem;
+    background: linear-gradient(transparent, rgba(13, 12, 12, 0.75));
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--color-accent);
+    pointer-events: none;
+}
+
+.gallery-thumbs { margin-top: 0.6rem; height: 85px; }
+.gallery-thumbs .swiper-slide {
+    opacity: 0.4;
+    cursor: pointer;
+    border-radius: 3px;
+    overflow: hidden;
+    transition: opacity 0.3s ease;
+    border: 2px solid transparent;
+}
+.gallery-thumbs .swiper-slide-thumb-active {
+    opacity: 1;
+    border-color: var(--color-accent);
+}
+.gallery-thumbs img { width: 100%; height: 85px; object-fit: cover; display: block; }
+
+/* ── Flatpickr Dark Theme ──────────────────────────────── */
+.flatpickr-calendar {
+    background: #1a1818 !important;
+    border: 1px solid rgba(212, 175, 55, 0.25) !important;
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.7) !important;
+    border-radius: 4px !important;
+    color: #f5f2eb !important;
+}
+.flatpickr-day { color: #f5f2eb !important; border-radius: 2px !important; }
+.flatpickr-day.selected, .flatpickr-day.selected:hover {
+    background: #d4af37 !important;
+    border-color: #d4af37 !important;
+    color: #0d0c0c !important;
+}
+.flatpickr-day:hover, .flatpickr-day:focus {
+    background: rgba(212, 175, 55, 0.15) !important;
+    border-color: transparent !important;
+    color: #f5f2eb !important;
+}
+.flatpickr-day.today { border-color: rgba(212, 175, 55, 0.5) !important; }
+.flatpickr-day.flatpickr-disabled,
+.flatpickr-day.prevMonthDay,
+.flatpickr-day.nextMonthDay { color: #3a3a3a !important; }
+
+.flatpickr-months .flatpickr-month,
+.flatpickr-weekdays,
+span.flatpickr-weekday {
+    background: #1a1818 !important;
+    color: var(--color-accent) !important;
+    fill: var(--color-accent) !important;
+}
+.flatpickr-current-month .flatpickr-monthDropdown-months,
+.flatpickr-current-month input.cur-year { color: #f5f2eb !important; background: transparent !important; }
+.flatpickr-months .flatpickr-prev-month,
+.flatpickr-months .flatpickr-next-month { color: var(--color-accent) !important; fill: var(--color-accent) !important; }
+
+.flatpickr-time {
+    background: #1a1818 !important;
+    border-top: 1px solid rgba(212, 175, 55, 0.1) !important;
+}
+.flatpickr-time input.flatpickr-hour,
+.flatpickr-time input.flatpickr-minute,
+.flatpickr-time .flatpickr-am-pm { color: #f5f2eb !important; background: transparent !important; }
+.flatpickr-time .numInputWrapper:hover,
+.flatpickr-time .flatpickr-am-pm:hover { background: rgba(212, 175, 55, 0.1) !important; }
+
+/* ── Plan Your Visit Widget ────────────────────────────── */
+.visit-planner-section {
+    background: var(--color-secondary);
+    padding: 4rem 5%;
+    border-top: 1px solid rgba(255, 255, 255, 0.04);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+}
+.visit-planner {
+    max-width: 1100px;
+    margin: 0 auto;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(212, 175, 55, 0.15);
+    border-radius: 4px;
+    padding: 3rem;
+    backdrop-filter: blur(10px);
+}
+.visit-planner-header { margin-bottom: 2rem; }
+.visit-planner-header h3 { font-size: 2rem; color: var(--color-accent); margin-bottom: 0.4rem; }
+.visit-planner-header p { color: #777; font-size: 0.9rem; letter-spacing: 0.5px; }
+
+.planner-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr auto;
+    gap: 1.5rem;
+    align-items: end;
+}
+.planner-group { display: flex; flex-direction: column; gap: 0.5rem; }
+.planner-label {
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #888;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+.planner-label svg { width: 13px; height: 13px; color: var(--color-accent); }
+.planner-input {
+    background: rgba(0, 0, 0, 0.35);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 0.9rem 1rem;
+    color: var(--color-text);
+    font-family: var(--font-body);
+    border-radius: 2px;
+    outline: none;
+    transition: var(--transition);
+    cursor: pointer;
+    width: 100%;
+    font-size: 0.9rem;
+}
+.planner-input:focus { border-color: var(--color-accent); }
+.planner-input::placeholder { color: #444; }
+
+@media (max-width: 768px) {
+    .planner-grid { grid-template-columns: 1fr; }
+    .visit-planner { padding: 2rem; }
+}
+
+/* ── Menu category icon ────────────────────────────────── */
+.menu-category-icon { width: 17px; height: 17px; color: var(--color-accent); flex-shrink: 0; }

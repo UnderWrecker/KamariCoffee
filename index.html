@@ -3,14 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>L'Aura | Premium Café & Roastery</title>
+    <title>L'Aura | Premium Café &amp; Roastery</title>
     <meta name="description" content="Experience the finest artisanal coffee and delicate pastries at L'Aura Café.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <!-- Tailwind CSS (preflight disabled — preserves our dark theme variables) -->
+    <script>tailwind.config = { corePlugins: { preflight: false }, theme: { extend: { colors: { gold: '#d4af37', 'cafe-dark': '#0d0c0c' } } } }</script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Swiper.js -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+    <!-- AOS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css">
+    <!-- Styles -->
     <link rel="stylesheet" href="style.css">
     <style>
-        /* Hero Section */
+        /* ── Hero ───────────────────────────────────────────── */
         #hero {
             height: 100vh;
             display: flex;
@@ -19,36 +27,25 @@
             position: relative;
             overflow: hidden;
         }
-
         .hero-bg {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            position: absolute; top: 0; left: 0;
+            width: 100%; height: 100%;
             background-image: url('https://images.unsplash.com/photo-1554118811-1e0d58224f24?q=80&w=2047&auto=format&fit=crop');
             background-size: cover;
             background-position: center;
             z-index: -2;
-            transform: scale(1.05);
             animation: slowZoom 20s infinite alternate;
         }
-
         @keyframes slowZoom {
             from { transform: scale(1); }
-            to { transform: scale(1.1); }
+            to   { transform: scale(1.1); }
         }
-
         .hero-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(to bottom, rgba(13, 12, 12, 0.5) 0%, rgba(13, 12, 12, 1) 100%);
+            position: absolute; top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: linear-gradient(to bottom, rgba(13,12,12,0.5) 0%, rgba(13,12,12,1) 100%);
             z-index: -1;
         }
-
         .hero-content {
             text-align: center;
             max-width: 800px;
@@ -57,14 +54,7 @@
             transform: translateY(30px);
             animation: fadeUp 1s 0.5s forwards ease-out;
         }
-
-        @keyframes fadeUp {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
+        @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
         .hero-subtitle {
             font-size: 1rem;
             text-transform: uppercase;
@@ -73,15 +63,9 @@
             margin-bottom: 1.5rem;
             display: block;
         }
+        .hero-title { font-size: 5rem; line-height: 1.1; margin-bottom: 2rem; font-style: italic; }
 
-        .hero-title {
-            font-size: 5rem;
-            line-height: 1.1;
-            margin-bottom: 2rem;
-            font-style: italic;
-        }
-
-        /* Home Sections */
+        /* ── Grid Sections ──────────────────────────────────── */
         .grid-2 {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -90,211 +74,61 @@
             max-width: 1200px;
             margin: 0 auto;
         }
-
         .img-wrapper {
             position: relative;
             border-radius: 4px;
             overflow: hidden;
             box-shadow: 0 20px 40px rgba(0,0,0,0.4);
         }
+        .img-wrapper img { width: 100%; height: auto; display: block; transition: var(--transition); }
+        .img-wrapper:hover img { transform: scale(1.05); }
+        .text-content p { margin-bottom: 1.5rem; color: #aaa; font-size: 1.1rem; }
+        .signature { font-family: var(--font-heading); font-style: italic; font-size: 2rem; color: var(--color-accent); margin-top: 2rem; }
 
-        .img-wrapper img {
-            width: 100%;
-            height: auto;
-            display: block;
-            transition: var(--transition);
-        }
-        
-        .img-wrapper:hover img {
-            transform: scale(1.05);
-        }
-
-        .text-content p {
-            margin-bottom: 1.5rem;
-            color: #aaa;
-            font-size: 1.1rem;
-        }
-
-        .signature {
-            font-family: var(--font-heading);
-            font-style: italic;
-            font-size: 2rem;
-            color: var(--color-accent);
-            margin-top: 2rem;
-        }
-
-        /* Testimonials — Horizontal Carousel */
-        .testimonial-carousel-wrap {
-            position: relative;
-            max-width: 1300px;
-            margin: 0 auto;
-        }
-
-        .carousel-fade-left,
-        .carousel-fade-right {
-            position: absolute;
-            top: 0;
-            bottom: 60px;
-            width: 100px;
-            z-index: 2;
-            pointer-events: none;
-        }
-
-        .carousel-fade-left {
-            left: 0;
-            background: linear-gradient(to right, var(--color-bg) 30%, transparent);
-        }
-
-        .carousel-fade-right {
-            right: 0;
-            background: linear-gradient(to left, var(--color-bg) 30%, transparent);
-        }
-
-        .testimonial-track-outer { overflow: hidden; padding: 0.5rem 0 1rem; }
-
-        .testimonial-track {
-            display: flex;
-            gap: 1.5rem;
-            overflow-x: auto;
-            scroll-snap-type: x mandatory;
-            scroll-behavior: smooth;
-            -webkit-overflow-scrolling: touch;
-            padding: 1.5rem 4rem 2rem;
-            scrollbar-width: none;
-        }
-
-        .testimonial-track::-webkit-scrollbar { display: none; }
-
+        /* ── Testimonial Cards ──────────────────────────────── */
         .testimonial-card {
-            flex: 0 0 300px;
             background: rgba(255, 255, 255, 0.03);
             padding: 2.5rem 2rem 2rem;
             border: 1px solid rgba(255, 255, 255, 0.05);
             border-radius: 4px;
             text-align: center;
             transition: var(--transition);
-            scroll-snap-align: start;
             position: relative;
+            height: 100%;
+            box-sizing: border-box;
         }
-
-        .testimonial-card:hover {
-            transform: translateY(-8px);
+        .testimonial-swiper .swiper-slide-active .testimonial-card {
             border-color: rgba(212, 175, 55, 0.3);
             background: rgba(255, 255, 255, 0.05);
         }
-
         .rating-badge {
-            position: absolute;
-            top: 1rem;
-            right: 1rem;
-            font-size: 0.7rem;
-            letter-spacing: 1px;
+            position: absolute; top: 1rem; right: 1rem;
+            font-size: 0.68rem; letter-spacing: 1px;
             color: var(--color-accent);
             background: rgba(212, 175, 55, 0.08);
             border: 1px solid rgba(212, 175, 55, 0.2);
-            padding: 0.2rem 0.45rem;
+            padding: 0.18rem 0.45rem;
             border-radius: 2px;
         }
-
         .stars {
             color: var(--color-accent);
             margin-bottom: 1rem;
-            font-size: 1.1rem;
+            font-size: 1.05rem;
             display: flex;
             justify-content: center;
             gap: 1px;
         }
-
         .star-empty { color: rgba(255, 255, 255, 0.15); }
-
-        .star-half {
-            position: relative;
-            display: inline-block;
-            color: rgba(255, 255, 255, 0.15);
-        }
-
+        .star-half { position: relative; display: inline-block; color: rgba(255, 255, 255, 0.15); }
         .star-half::before {
             content: '\2605';
-            position: absolute;
-            left: 0;
-            width: 55%;
-            overflow: hidden;
+            position: absolute; left: 0;
+            width: 55%; overflow: hidden;
             color: var(--color-accent);
         }
-
-        .quote {
-            font-style: italic;
-            margin-bottom: 1.8rem;
-            color: #ccc;
-            line-height: 1.75;
-            font-size: 0.93rem;
-        }
-
-        .customer-name {
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            color: var(--color-accent);
-        }
-
-        .customer-tag {
-            display: block;
-            font-size: 0.73rem;
-            color: #555;
-            margin-top: 0.3rem;
-            letter-spacing: 1px;
-        }
-
-        /* Carousel nav */
-        .carousel-nav {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            margin-top: 1.5rem;
-        }
-
-        .carousel-btn {
-            width: 42px;
-            height: 42px;
-            border: 1px solid rgba(212, 175, 55, 0.3);
-            background: transparent;
-            color: var(--color-accent);
-            font-size: 1.1rem;
-            cursor: pointer;
-            border-radius: 2px;
-            transition: var(--transition);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-family: var(--font-body);
-        }
-
-        .carousel-btn:hover {
-            background: var(--color-accent);
-            color: var(--color-bg);
-        }
-
-        .carousel-dots {
-            display: flex;
-            justify-content: center;
-            gap: 0.45rem;
-            margin-top: 1.2rem;
-        }
-
-        .carousel-dot {
-            width: 6px;
-            height: 6px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.15);
-            cursor: pointer;
-            transition: var(--transition);
-        }
-
-        .carousel-dot.active {
-            background: var(--color-accent);
-            width: 20px;
-            border-radius: 3px;
-        }
+        .quote { font-style: italic; margin-bottom: 1.8rem; color: #ccc; line-height: 1.75; font-size: 0.93rem; }
+        .customer-name { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 2px; color: var(--color-accent); }
+        .customer-tag { display: block; font-size: 0.72rem; color: #555; margin-top: 0.3rem; letter-spacing: 1px; }
 
         @media (max-width: 768px) {
             .grid-2 { grid-template-columns: 1fr; }
@@ -306,45 +140,55 @@
 <body>
 
     <nav id="navbar">
-        <a href="index.html" class="logo">L'Aura</a>
+        <a href="index.html" class="logo flex items-center gap-2">
+            <i data-lucide="coffee" style="width:24px;height:24px;color:var(--color-accent);margin-right:6px;"></i>L'Aura
+        </a>
         <div class="nav-links">
             <a href="index.html" class="active">Home</a>
             <a href="menu.html">Menu</a>
             <a href="reservation.html">Reach Us</a>
         </div>
+        <button id="mobileToggle" aria-label="Toggle navigation">
+            <i data-lucide="menu" style="width:24px;height:24px;"></i>
+        </button>
     </nav>
 
+    <!-- Hero -->
     <section id="hero">
         <div class="hero-bg"></div>
         <div class="hero-overlay"></div>
         <div class="hero-content">
-            <span class="hero-subtitle">Artisanal Coffee & Roastery</span>
+            <span class="hero-subtitle">Artisanal Coffee &amp; Roastery</span>
             <h1 class="hero-title">Awaken Your<br>Senses.</h1>
             <a href="menu.html" class="btn">Explore Our Menu</a>
         </div>
     </section>
 
+    <!-- Founder Message -->
     <section id="ceo-message">
-        <div class="grid-2 reveal">
-            <div class="text-content">
+        <div class="grid-2">
+            <div class="text-content" data-aos="fade-right">
+                <span class="section-icon"><i data-lucide="message-square-quote"></i></span>
                 <span class="section-subtitle">From the Founder</span>
                 <h2 class="section-title">A Passion for Perfection</h2>
                 <p>"When I opened L'Aura, my vision was simple: to create a sanctuary where time slows down, and every sip tells a story. We don't just roast coffee; we curate an experience that honors the journey of the bean from the highlands to your cup."</p>
                 <p>Every pastry is crafted with imported French butter, and every shot of espresso is pulled with absolute precision. We invite you to step away from the noise of the world and indulge in true craftsmanship.</p>
                 <div class="signature">Eleanor Vance</div>
             </div>
-            <div class="img-wrapper">
+            <div class="img-wrapper" data-aos="fade-left" data-aos-delay="150">
                 <img src="https://images.unsplash.com/photo-1511920170033-f8396924c348?q=80&w=1974&auto=format&fit=crop" alt="Coffee Pour">
             </div>
         </div>
     </section>
 
+    <!-- History -->
     <section id="history" style="background-color: var(--color-secondary);">
-        <div class="grid-2 reveal">
-            <div class="img-wrapper order-reverse">
+        <div class="grid-2">
+            <div class="img-wrapper order-reverse" data-aos="fade-right">
                 <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?q=80&w=1974&auto=format&fit=crop" alt="Coffee Roaster">
             </div>
-            <div class="text-content">
+            <div class="text-content" data-aos="fade-left" data-aos-delay="150">
+                <span class="section-icon"><i data-lucide="landmark"></i></span>
                 <span class="section-subtitle">Our Story</span>
                 <h2 class="section-title">Rooted in Tradition</h2>
                 <p>Established in 2012 in a small brick alleyway, L'Aura began as a humble micro-roastery. Our obsession with sourcing only the top 1% of specialty grade Arabica beans quickly drew a devoted following.</p>
@@ -354,20 +198,18 @@
         </div>
     </section>
 
+    <!-- Testimonials — Swiper Coverflow -->
     <section id="testimonials">
-        <div class="section-header reveal">
+        <div class="section-header" data-aos="fade-up">
             <span class="section-subtitle">The Experience</span>
             <h2 class="section-title">Words from Our Guests</h2>
         </div>
 
-        <div class="testimonial-carousel-wrap reveal">
-            <div class="carousel-fade-left"></div>
-            <div class="carousel-fade-right"></div>
+        <!-- loop:false + rewind:true keeps dot count = real slide count (no clone mismatch) -->
+        <div class="swiper testimonial-swiper" data-aos="fade-up" data-aos-delay="100">
+            <div class="swiper-wrapper">
 
-            <div class="testimonial-track-outer">
-                <div class="testimonial-track" id="testimonialTrack">
-
-                    <!-- 1 — 5/5 -->
+                <div class="swiper-slide">
                     <div class="testimonial-card">
                         <span class="rating-badge">5.0 ★</span>
                         <div class="stars">★★★★★</div>
@@ -375,8 +217,9 @@
                         <span class="customer-name">James Arlington</span>
                         <span class="customer-tag">Verified Guest</span>
                     </div>
+                </div>
 
-                    <!-- 2 — 5/5 -->
+                <div class="swiper-slide">
                     <div class="testimonial-card">
                         <span class="rating-badge">5.0 ★</span>
                         <div class="stars">★★★★★</div>
@@ -384,8 +227,9 @@
                         <span class="customer-name">Sophie Laurent</span>
                         <span class="customer-tag">Verified Guest</span>
                     </div>
+                </div>
 
-                    <!-- 3 — 5/5 -->
+                <div class="swiper-slide">
                     <div class="testimonial-card">
                         <span class="rating-badge">5.0 ★</span>
                         <div class="stars">★★★★★</div>
@@ -393,8 +237,9 @@
                         <span class="customer-name">Marcus Reed</span>
                         <span class="customer-tag">Verified Guest</span>
                     </div>
+                </div>
 
-                    <!-- 4 — 5/5 -->
+                <div class="swiper-slide">
                     <div class="testimonial-card">
                         <span class="rating-badge">5.0 ★</span>
                         <div class="stars">★★★★★</div>
@@ -402,8 +247,9 @@
                         <span class="customer-name">Fatima Al-Hassan</span>
                         <span class="customer-tag">Verified Guest</span>
                     </div>
+                </div>
 
-                    <!-- 5 — 4.5/5 -->
+                <div class="swiper-slide">
                     <div class="testimonial-card">
                         <span class="rating-badge">4.5 ★</span>
                         <div class="stars">★★★★<span class="star-half">★</span></div>
@@ -411,8 +257,9 @@
                         <span class="customer-name">Amelia Chen</span>
                         <span class="customer-tag">Verified Guest</span>
                     </div>
+                </div>
 
-                    <!-- 6 — 4.5/5 -->
+                <div class="swiper-slide">
                     <div class="testimonial-card">
                         <span class="rating-badge">4.5 ★</span>
                         <div class="stars">★★★★<span class="star-half">★</span></div>
@@ -420,8 +267,9 @@
                         <span class="customer-name">Isabella Moreau</span>
                         <span class="customer-tag">Verified Guest</span>
                     </div>
+                </div>
 
-                    <!-- 7 — 4/5 -->
+                <div class="swiper-slide">
                     <div class="testimonial-card">
                         <span class="rating-badge">4.0 ★</span>
                         <div class="stars">★★★★<span class="star-empty">★</span></div>
@@ -429,8 +277,9 @@
                         <span class="customer-name">Nikolai Petrenko</span>
                         <span class="customer-tag">Verified Guest</span>
                     </div>
+                </div>
 
-                    <!-- 8 — 4/5 -->
+                <div class="swiper-slide">
                     <div class="testimonial-card">
                         <span class="rating-badge">4.0 ★</span>
                         <div class="stars">★★★★<span class="star-empty">★</span></div>
@@ -438,8 +287,9 @@
                         <span class="customer-name">Priya Sharma</span>
                         <span class="customer-tag">Verified Guest</span>
                     </div>
+                </div>
 
-                    <!-- 9 — 3.5/5 -->
+                <div class="swiper-slide">
                     <div class="testimonial-card">
                         <span class="rating-badge">3.5 ★</span>
                         <div class="stars">★★★<span class="star-half">★</span><span class="star-empty">★</span></div>
@@ -447,8 +297,9 @@
                         <span class="customer-name">Luca Bianchi</span>
                         <span class="customer-tag">Verified Guest</span>
                     </div>
+                </div>
 
-                    <!-- 10 — 3.5/5 -->
+                <div class="swiper-slide">
                     <div class="testimonial-card">
                         <span class="rating-badge">3.5 ★</span>
                         <div class="stars">★★★<span class="star-half">★</span><span class="star-empty">★</span></div>
@@ -456,15 +307,12 @@
                         <span class="customer-name">David Kim</span>
                         <span class="customer-tag">Verified Guest</span>
                     </div>
-
                 </div>
-            </div>
 
-            <div class="carousel-nav">
-                <button class="carousel-btn" id="prevBtn" aria-label="Previous">&#8592;</button>
-                <button class="carousel-btn" id="nextBtn" aria-label="Next">&#8594;</button>
             </div>
-            <div class="carousel-dots" id="carouselDots"></div>
+            <div class="swiper-pagination"></div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
         </div>
     </section>
 
@@ -475,9 +323,12 @@
             <a href="https://twitter.com/L_Aura_Cafe" target="_blank">Twitter</a>
             <a href="https://www.facebook.com/suraseachin/?locale=th_TH" target="_blank">Facebook</a>
         </div>
-        <p class="copyright">&copy; 2026 L'Aura Café & Roastery. All Rights Reserved.</p>
+        <p class="copyright">&copy; 2026 L'Aura Café &amp; Roastery. All Rights Reserved.</p>
     </footer>
 
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
