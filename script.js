@@ -144,3 +144,57 @@ if (modal && closeBtn && menuItems.length) {
     closeBtn.addEventListener('click', closeModal);
     window.addEventListener('click', e => { if (e.target === modal) closeModal(); });
 }
+
+// ── Lenis Smooth Scrolling ────────────────────────────────────────────────
+if (typeof Lenis !== 'undefined') {
+    const lenis = new Lenis({
+        duration: 1.2,
+        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), 
+        smooth: true,
+    });
+
+    function raf(time) {
+        lenis.raf(time);
+        requestAnimationFrame(raf);
+    }
+    requestAnimationFrame(raf);
+}
+
+// ── Typed.js Hero Animation (index.html) ──────────────────────────────────
+const typedElement = document.getElementById('typed-hero');
+if (typedElement && typeof Typed !== 'undefined') {
+    new Typed('#typed-hero', {
+        strings: ['Senses', 'Morning', 'Taste', 'Routine'],
+        typeSpeed: 60,
+        backSpeed: 40,
+        backDelay: 2000,
+        loop: true,
+        showCursor: true,
+        cursorChar: '|',
+        autoInsertCss: true
+    });
+}
+
+// ── Rough Notation (menu.html) ────────────────────────────────────────────
+const rnElement = document.getElementById('rn-specialties');
+if (rnElement && typeof window.RoughNotation !== 'undefined') {
+    const annotation = window.RoughNotation.annotate(rnElement, {
+        type: 'circle',
+        color: '#d4af37',
+        padding: [2, 10],
+        strokeWidth: 2,
+        animationDuration: 1200
+    });
+    
+    // Use Intersection Observer to animate only when scrolled into view
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                setTimeout(() => annotation.show(), 300); // slight delay
+                observer.unobserve(rnElement);
+            }
+        });
+    }, { threshold: 0.5 });
+    
+    observer.observe(rnElement);
+}
