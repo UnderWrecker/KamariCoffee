@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Reservations & Contact | L'Aura</title>
-    <meta name="description" content="Book a table at L'Aura Café and find our location.">
+    <title>Reach Us | L'Aura</title>
+    <meta name="description" content="Find L'Aura Café — our location, hours, and a look at our beautiful storefront.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
@@ -12,123 +12,217 @@
     <style>
         .page-header {
             padding-top: 12rem;
-            padding-bottom: 2rem;
+            padding-bottom: 4rem;
             text-align: center;
+            background: linear-gradient(to bottom, var(--color-bg) 0%, var(--color-secondary) 100%);
         }
 
-        #reservation-wrap {
-            background: linear-gradient(rgba(13, 12, 12, 0.95), rgba(13, 12, 12, 0.95)), url('https://images.unsplash.com/photo-1497935586351-b67a49e012bf?q=80&w=2071&auto=format&fit=crop') center/cover fixed;
-            padding: 4rem 5% 8rem;
+        /* ── Photo Gallery ─────────────────────────────── */
+        #gallery-section {
+            padding: 0 5% 6rem;
+            background: var(--color-secondary);
         }
 
-        .reservation-grid {
+        .gallery-label {
+            text-align: center;
+            padding: 4rem 0 3rem;
+        }
+
+        .gallery-grid {
             display: grid;
-            grid-template-columns: 1.2fr 0.8fr;
-            gap: 4rem;
-            max-width: 1200px;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: 320px 220px;
+            gap: 1rem;
+            max-width: 1100px;
             margin: 0 auto;
         }
 
-        /* Form Side */
-        .reservation-container {
-            background: var(--color-glass);
-            padding: 4rem;
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
             border-radius: 4px;
-            border: 1px solid rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(212, 175, 55, 0.1);
+        }
+
+        .gallery-item.tall {
+            grid-row: 1 / 3;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            filter: brightness(0.85);
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.06);
+            filter: brightness(1);
+        }
+
+        .gallery-item-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 1.5rem;
+            background: linear-gradient(transparent, rgba(13, 12, 12, 0.75));
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .gallery-item:hover .gallery-item-overlay {
+            opacity: 1;
+        }
+
+        .gallery-caption {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--color-accent);
+        }
+
+        /* ── Contact & Map ─────────────────────────────── */
+        #reach-wrap {
+            background: linear-gradient(rgba(13, 12, 12, 0.97), rgba(13, 12, 12, 0.97)),
+                        url('https://images.unsplash.com/photo-1497935586351-b67a49e012bf?q=80&w=2071&auto=format&fit=crop') center/cover fixed;
+            padding: 6rem 5% 8rem;
+        }
+
+        .reach-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            max-width: 1100px;
+            margin: 0 auto;
+            align-items: start;
+        }
+
+        .contact-card {
+            background: var(--color-glass);
+            padding: 3.5rem;
+            border-radius: 4px;
+            border: 1px solid rgba(255, 255, 255, 0.06);
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
             box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
         }
 
-        .reservation-form {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2rem;
-        }
-
-        .form-group { display: flex; flex-direction: column; }
-        .form-group.full-width { grid-column: 1 / -1; }
-
-        label {
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 0.5rem;
-            color: #aaa;
-        }
-
-        input, select, textarea {
-            background: rgba(0, 0, 0, 0.3);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 1rem;
-            color: var(--color-text);
-            font-family: var(--font-body);
-            border-radius: 2px;
-            transition: var(--transition);
-            outline: none;
-        }
-
-        input:focus, select:focus, textarea:focus {
-            border-color: var(--color-accent);
-            background: rgba(0, 0, 0, 0.5);
-        }
-
-        textarea { resize: vertical; min-height: 100px; }
-        .btn-submit { margin-top: 1rem; width: 100%; }
-
-        /* Contact & Map Side */
-        .contact-info-container {
-            padding: 2rem 0;
-        }
-
         .contact-header {
-            font-size: 2rem;
+            font-size: 2.2rem;
             color: var(--color-accent);
-            margin-bottom: 2rem;
+            margin-bottom: 2.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
         }
 
         .contact-detail {
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.8rem;
+            display: flex;
+            gap: 1rem;
+            align-items: flex-start;
+        }
+
+        .contact-icon {
+            font-size: 1.2rem;
+            color: var(--color-accent);
+            margin-top: 2px;
+            flex-shrink: 0;
         }
 
         .contact-label {
             display: block;
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             text-transform: uppercase;
             letter-spacing: 2px;
-            color: #888;
+            color: #777;
             margin-bottom: 0.3rem;
         }
 
         .contact-value {
-            font-size: 1.1rem;
+            font-size: 1.05rem;
             color: var(--color-text);
+            line-height: 1.6;
+        }
+
+        .map-side {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .map-header {
+            font-size: 2.2rem;
+            color: var(--color-accent);
+            font-family: var(--font-heading);
+        }
+
+        .map-desc {
+            font-size: 0.95rem;
+            color: #888;
+            line-height: 1.7;
         }
 
         .map-container {
-            margin-top: 3rem;
-            border: 1px solid rgba(255,255,255,0.1);
+            border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 4px;
             overflow: hidden;
-            height: 250px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            height: 320px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
         }
-        
+
         .map-container iframe {
             width: 100%;
             height: 100%;
             border: 0;
         }
 
-        @media (max-width: 992px) {
-            .reservation-grid { grid-template-columns: 1fr; }
-            .contact-info-container { order: -1; text-align: center; }
-            .map-container { height: 300px; }
+        .directions-btn {
+            display: inline-block;
+            margin-top: 0.5rem;
         }
-        
-        @media (max-width: 768px) {
-            .reservation-form { grid-template-columns: 1fr; }
-            .reservation-container { padding: 2rem; }
+
+        /* Divider ornament */
+        .ornament-divider {
+            text-align: center;
+            color: var(--color-accent);
+            opacity: 0.4;
+            font-size: 1.4rem;
+            letter-spacing: 8px;
+            margin: 2rem 0;
+        }
+
+        @media (max-width: 992px) {
+            .reach-grid {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .gallery-grid {
+                grid-template-columns: 1fr 1fr;
+                grid-template-rows: 200px 200px;
+            }
+
+            .gallery-item.tall {
+                grid-row: auto;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .gallery-grid {
+                grid-template-columns: 1fr;
+                grid-template-rows: auto;
+            }
+
+            .gallery-item {
+                height: 220px;
+            }
+
+            .gallery-item.tall {
+                height: 280px;
+            }
         }
     </style>
 </head>
@@ -139,89 +233,119 @@
         <div class="nav-links">
             <a href="index.html">Home</a>
             <a href="menu.html">Menu</a>
-            <a href="reservation.html" class="active">Reservations</a>
+            <a href="reservation.html" class="active">Reach Us</a>
         </div>
     </nav>
 
-    <div id="reservation-wrap">
-        <div class="page-header reveal">
-            <span class="section-subtitle">Experience L'Aura</span>
-            <h1 class="section-title">Join Us</h1>
+    <!-- Page Header -->
+    <div class="page-header">
+        <span class="section-subtitle reveal">Come Find Us</span>
+        <h1 class="section-title reveal">Reach Us</h1>
+    </div>
+
+    <!-- Photo Gallery -->
+    <section id="gallery-section">
+        <div class="gallery-label reveal">
+            <span class="section-subtitle">A Glimpse of L'Aura</span>
+            <h2 class="section-title" style="font-size:2.2rem; margin-top:0.5rem;">Our Storefront</h2>
         </div>
-        
-        <div class="reservation-grid">
-            <div class="reservation-container reveal">
-                <form class="reservation-form" id="resForm">
-                    <div class="form-group">
-                        <label for="name">Full Name</label>
-                        <input type="text" id="name" required placeholder="John Doe">
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="email">Email Address</label>
-                        <input type="email" id="email" required placeholder="john@example.com">
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="date">Date</label>
-                        <input type="date" id="date" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="time">Time</label>
-                        <input type="time" id="time" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="guests">Number of Guests</label>
-                        <select id="guests" required>
-                            <option value="1">1 Person</option>
-                            <option value="2" selected>2 People</option>
-                            <option value="3">3 People</option>
-                            <option value="4">4 People</option>
-                            <option value="5+">5+ People</option>
-                        </select>
-                    </div>
-                    
-                    <div class="form-group full-width">
-                        <label for="notes">Special Requests</label>
-                        <textarea id="notes" placeholder="Any dietary restrictions or special occasions?"></textarea>
-                    </div>
-                    
-                    <div class="form-group full-width">
-                        <button type="submit" class="btn btn-submit">Confirm Reservation</button>
-                    </div>
-                </form>
+
+        <div class="gallery-grid reveal">
+            <!-- Large feature photo -->
+            <div class="gallery-item tall">
+                <img
+                    src="https://images.unsplash.com/photo-1600093463592-8e36ae95ef56?q=80&w=1974&auto=format&fit=crop"
+                    alt="L'Aura Café main entrance">
+                <div class="gallery-item-overlay">
+                    <span class="gallery-caption">Main Entrance</span>
+                </div>
             </div>
-            
-            <div class="contact-info-container reveal">
+
+            <!-- Top-right photo -->
+            <div class="gallery-item">
+                <img
+                    src="https://images.unsplash.com/photo-1521017432531-fbd92d768814?q=80&w=1974&auto=format&fit=crop"
+                    alt="L'Aura Café cozy corner seating">
+                <div class="gallery-item-overlay">
+                    <span class="gallery-caption">Corner Seating</span>
+                </div>
+            </div>
+
+            <!-- Bottom-right photo -->
+            <div class="gallery-item">
+                <img
+                    src="https://images.unsplash.com/photo-1559925393-8be0ec4767c8?q=80&w=1974&auto=format&fit=crop"
+                    alt="L'Aura Café outdoor terrace">
+                <div class="gallery-item-overlay">
+                    <span class="gallery-caption">Outdoor Terrace</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Info + Map -->
+    <div id="reach-wrap">
+        <div class="reach-grid">
+
+            <!-- Contact Card -->
+            <div class="contact-card reveal">
                 <h3 class="contact-header">Visit Our Store</h3>
-                
+
                 <div class="contact-detail">
-                    <span class="contact-label">Address</span>
-                    <span class="contact-value">1284 Artisanal Ave, Suite 101<br>New York, NY 10012</span>
-                </div>
-                
-                <div class="contact-detail">
-                    <span class="contact-label">Phone</span>
-                    <span class="contact-value">+1 (212) 555-0198</span>
-                </div>
-                
-                <div class="contact-detail">
-                    <span class="contact-label">Email</span>
-                    <span class="contact-value">hello@lauracafe.com</span>
-                </div>
-                
-                <div class="contact-detail">
-                    <span class="contact-label">Hours</span>
-                    <span class="contact-value">Mon - Fri: 7:00 AM - 6:00 PM<br>Sat - Sun: 8:00 AM - 5:00 PM</span>
+                    <span class="contact-icon">📍</span>
+                    <div>
+                        <span class="contact-label">Address</span>
+                        <span class="contact-value">1284 Artisanal Ave, Suite 101<br>New York, NY 10012</span>
+                    </div>
                 </div>
 
-                <div class="map-container">
-                    <!-- Fictional map using a generic embed -->
-                    <iframe src="https://maps.google.com/maps?q=SoHo,%20New%20York&t=&z=14&ie=UTF8&iwloc=&output=embed" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <div class="ornament-divider">— ✦ —</div>
+
+                <div class="contact-detail">
+                    <span class="contact-icon">📞</span>
+                    <div>
+                        <span class="contact-label">Phone</span>
+                        <span class="contact-value">+1 (212) 555-0198</span>
+                    </div>
+                </div>
+
+                <div class="contact-detail">
+                    <span class="contact-icon">✉️</span>
+                    <div>
+                        <span class="contact-label">Email</span>
+                        <span class="contact-value">hello@lauracafe.com</span>
+                    </div>
+                </div>
+
+                <div class="ornament-divider">— ✦ —</div>
+
+                <div class="contact-detail">
+                    <span class="contact-icon">🕐</span>
+                    <div>
+                        <span class="contact-label">Hours</span>
+                        <span class="contact-value">
+                            Mon – Fri &nbsp;· &nbsp;7:00 AM – 6:00 PM<br>
+                            Sat – Sun &nbsp;· &nbsp;8:00 AM – 5:00 PM
+                        </span>
+                    </div>
                 </div>
             </div>
+
+            <!-- Map Side -->
+            <div class="map-side reveal">
+                <h3 class="map-header">Find Us Here</h3>
+                <p class="map-desc">We're nestled in the heart of SoHo, New York — just a short walk from Spring Street Station. Look for the warm amber glow through our vintage window display.</p>
+                <div class="map-container">
+                    <iframe
+                        src="https://maps.google.com/maps?q=SoHo,%20New%20York&t=&z=14&ie=UTF8&iwloc=&output=embed"
+                        allowfullscreen=""
+                        loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                </div>
+                <a href="https://maps.google.com/maps?q=SoHo,%20New%20York" target="_blank" class="btn directions-btn">Get Directions →</a>
+            </div>
+
         </div>
     </div>
 
@@ -232,27 +356,9 @@
             <a href="https://twitter.com/L_Aura_Cafe" target="_blank">Twitter</a>
             <a href="https://www.facebook.com/suraseachin/?locale=th_TH" target="_blank">Facebook</a>
         </div>
-        <p class="copyright">&copy; 2026 L'Aura Café & Roastery. All Rights Reserved.</p>
+        <p class="copyright">&copy; 2026 L'Aura Café &amp; Roastery. All Rights Reserved.</p>
     </footer>
 
     <script src="script.js"></script>
-    <script>
-        // Form submission prevention for demo
-        document.getElementById('resForm')?.addEventListener('submit', function(e) {
-            e.preventDefault();
-            const btn = this.querySelector('.btn-submit');
-            const originalText = btn.innerText;
-            btn.innerText = 'Request Sent!';
-            btn.style.background = 'var(--color-accent)';
-            btn.style.color = 'var(--color-bg)';
-            
-            setTimeout(() => {
-                btn.innerText = originalText;
-                btn.style.background = 'transparent';
-                btn.style.color = 'var(--color-accent)';
-                this.reset();
-            }, 3000);
-        });
-    </script>
 </body>
 </html>
