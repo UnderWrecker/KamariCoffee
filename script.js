@@ -70,3 +70,52 @@ if (modal && closeBtn && menuItems) {
         }
     });
 }
+
+// Testimonial Carousel
+(function () {
+    const track = document.getElementById('testimonialTrack');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    const dotsWrap = document.getElementById('carouselDots');
+    if (!track || !prevBtn || !nextBtn || !dotsWrap) return;
+
+    const CARD_WIDTH = 300 + 24; // card flex-basis + gap
+    const cards = track.querySelectorAll('.testimonial-card');
+    const total = cards.length;
+    let current = 0;
+
+    // Build dots
+    cards.forEach((_, i) => {
+        const dot = document.createElement('div');
+        dot.className = 'carousel-dot' + (i === 0 ? ' active' : '');
+        dot.addEventListener('click', () => goTo(i));
+        dotsWrap.appendChild(dot);
+    });
+
+    function updateDots() {
+        dotsWrap.querySelectorAll('.carousel-dot').forEach((d, i) =>
+            d.classList.toggle('active', i === current));
+    }
+
+    function goTo(index) {
+        current = Math.max(0, Math.min(index, total - 1));
+        track.scrollTo({ left: current * CARD_WIDTH, behavior: 'smooth' });
+        updateDots();
+    }
+
+    prevBtn.addEventListener('click', () => goTo(current - 1));
+    nextBtn.addEventListener('click', () => goTo(current + 1));
+
+    // Sync dots on manual swipe / drag
+    track.addEventListener('scroll', () => {
+        current = Math.round(track.scrollLeft / CARD_WIDTH);
+        updateDots();
+    }, { passive: true });
+
+    // Auto-scroll every 4 seconds
+    let timer = setInterval(() => goTo((current + 1) % total), 4000);
+    track.addEventListener('mouseenter', () => clearInterval(timer));
+    track.addEventListener('mouseleave', () => {
+        timer = setInterval(() => goTo((current + 1) % total), 4000);
+    });
+})();

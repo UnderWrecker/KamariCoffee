@@ -123,46 +123,177 @@
             margin-top: 2rem;
         }
 
-        /* Testimonials */
-        .testimonial-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            max-width: 1200px;
+        /* Testimonials — Horizontal Carousel */
+        .testimonial-carousel-wrap {
+            position: relative;
+            max-width: 1300px;
             margin: 0 auto;
         }
 
+        .carousel-fade-left,
+        .carousel-fade-right {
+            position: absolute;
+            top: 0;
+            bottom: 60px;
+            width: 100px;
+            z-index: 2;
+            pointer-events: none;
+        }
+
+        .carousel-fade-left {
+            left: 0;
+            background: linear-gradient(to right, var(--color-bg) 30%, transparent);
+        }
+
+        .carousel-fade-right {
+            right: 0;
+            background: linear-gradient(to left, var(--color-bg) 30%, transparent);
+        }
+
+        .testimonial-track-outer { overflow: hidden; padding: 0.5rem 0 1rem; }
+
+        .testimonial-track {
+            display: flex;
+            gap: 1.5rem;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            scroll-behavior: smooth;
+            -webkit-overflow-scrolling: touch;
+            padding: 1.5rem 4rem 2rem;
+            scrollbar-width: none;
+        }
+
+        .testimonial-track::-webkit-scrollbar { display: none; }
+
         .testimonial-card {
+            flex: 0 0 300px;
             background: rgba(255, 255, 255, 0.03);
-            padding: 3rem 2rem;
+            padding: 2.5rem 2rem 2rem;
             border: 1px solid rgba(255, 255, 255, 0.05);
             border-radius: 4px;
             text-align: center;
             transition: var(--transition);
+            scroll-snap-align: start;
+            position: relative;
         }
 
         .testimonial-card:hover {
-            transform: translateY(-10px);
+            transform: translateY(-8px);
             border-color: rgba(212, 175, 55, 0.3);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .rating-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            font-size: 0.7rem;
+            letter-spacing: 1px;
+            color: var(--color-accent);
+            background: rgba(212, 175, 55, 0.08);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            padding: 0.2rem 0.45rem;
+            border-radius: 2px;
         }
 
         .stars {
             color: var(--color-accent);
             margin-bottom: 1rem;
-            font-size: 1.2rem;
+            font-size: 1.1rem;
+            display: flex;
+            justify-content: center;
+            gap: 1px;
+        }
+
+        .star-empty { color: rgba(255, 255, 255, 0.15); }
+
+        .star-half {
+            position: relative;
+            display: inline-block;
+            color: rgba(255, 255, 255, 0.15);
+        }
+
+        .star-half::before {
+            content: '\2605';
+            position: absolute;
+            left: 0;
+            width: 55%;
+            overflow: hidden;
+            color: var(--color-accent);
         }
 
         .quote {
             font-style: italic;
-            margin-bottom: 2rem;
-            color: #ddd;
+            margin-bottom: 1.8rem;
+            color: #ccc;
+            line-height: 1.75;
+            font-size: 0.93rem;
         }
 
         .customer-name {
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             text-transform: uppercase;
             letter-spacing: 2px;
             color: var(--color-accent);
+        }
+
+        .customer-tag {
+            display: block;
+            font-size: 0.73rem;
+            color: #555;
+            margin-top: 0.3rem;
+            letter-spacing: 1px;
+        }
+
+        /* Carousel nav */
+        .carousel-nav {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .carousel-btn {
+            width: 42px;
+            height: 42px;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            background: transparent;
+            color: var(--color-accent);
+            font-size: 1.1rem;
+            cursor: pointer;
+            border-radius: 2px;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-body);
+        }
+
+        .carousel-btn:hover {
+            background: var(--color-accent);
+            color: var(--color-bg);
+        }
+
+        .carousel-dots {
+            display: flex;
+            justify-content: center;
+            gap: 0.45rem;
+            margin-top: 1.2rem;
+        }
+
+        .carousel-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.15);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .carousel-dot.active {
+            background: var(--color-accent);
+            width: 20px;
+            border-radius: 3px;
         }
 
         @media (max-width: 768px) {
@@ -228,23 +359,112 @@
             <span class="section-subtitle">The Experience</span>
             <h2 class="section-title">Words from Our Guests</h2>
         </div>
-        
-        <div class="testimonial-grid">
-            <div class="testimonial-card reveal">
-                <div class="stars">★★★★★</div>
-                <p class="quote">"Absolutely the best pour-over I've had in the city. The atmosphere is incredibly sophisticated yet warm. The Geisha varietal was life-changing."</p>
-                <span class="customer-name">James Arlington</span>
+
+        <div class="testimonial-carousel-wrap reveal">
+            <div class="carousel-fade-left"></div>
+            <div class="carousel-fade-right"></div>
+
+            <div class="testimonial-track-outer">
+                <div class="testimonial-track" id="testimonialTrack">
+
+                    <!-- 1 — 5/5 -->
+                    <div class="testimonial-card">
+                        <span class="rating-badge">5.0 ★</span>
+                        <div class="stars">★★★★★</div>
+                        <p class="quote">"Absolutely the best pour-over I've had in the city. The atmosphere is incredibly sophisticated yet warm. The Geisha varietal was life-changing."</p>
+                        <span class="customer-name">James Arlington</span>
+                        <span class="customer-tag">Verified Guest</span>
+                    </div>
+
+                    <!-- 2 — 5/5 -->
+                    <div class="testimonial-card">
+                        <span class="rating-badge">5.0 ★</span>
+                        <div class="stars">★★★★★</div>
+                        <p class="quote">"An oasis of calm. The almond financiers pair perfectly with their cortado. My go-to spot for Sunday mornings when I want to feel truly pampered."</p>
+                        <span class="customer-name">Sophie Laurent</span>
+                        <span class="customer-tag">Verified Guest</span>
+                    </div>
+
+                    <!-- 3 — 5/5 -->
+                    <div class="testimonial-card">
+                        <span class="rating-badge">5.0 ★</span>
+                        <div class="stars">★★★★★</div>
+                        <p class="quote">"From the gorgeous interior to the meticulously crafted drinks, L'Aura hits every mark. You can taste the dedication in every single cup."</p>
+                        <span class="customer-name">Marcus Reed</span>
+                        <span class="customer-tag">Verified Guest</span>
+                    </div>
+
+                    <!-- 4 — 5/5 -->
+                    <div class="testimonial-card">
+                        <span class="rating-badge">5.0 ★</span>
+                        <div class="stars">★★★★★</div>
+                        <p class="quote">"Every visit feels like a mini vacation. The Silver Needle tea in a quiet corner — pure bliss. L'Aura has become my non-negotiable Sunday ritual."</p>
+                        <span class="customer-name">Fatima Al-Hassan</span>
+                        <span class="customer-tag">Verified Guest</span>
+                    </div>
+
+                    <!-- 5 — 4.5/5 -->
+                    <div class="testimonial-card">
+                        <span class="rating-badge">4.5 ★</span>
+                        <div class="stars">★★★★<span class="star-half">★</span></div>
+                        <p class="quote">"The cortado here is like liquid silk — perfectly balanced, and the baristas clearly care about their craft. Only wish they had a bit more seating."</p>
+                        <span class="customer-name">Amelia Chen</span>
+                        <span class="customer-tag">Verified Guest</span>
+                    </div>
+
+                    <!-- 6 — 4.5/5 -->
+                    <div class="testimonial-card">
+                        <span class="rating-badge">4.5 ★</span>
+                        <div class="stars">★★★★<span class="star-half">★</span></div>
+                        <p class="quote">"The Pain au Chocolat made me close my eyes. Real Valrhona chocolate in the most buttery dough — I still dream about it on Monday mornings."</p>
+                        <span class="customer-name">Isabella Moreau</span>
+                        <span class="customer-tag">Verified Guest</span>
+                    </div>
+
+                    <!-- 7 — 4/5 -->
+                    <div class="testimonial-card">
+                        <span class="rating-badge">4.0 ★</span>
+                        <div class="stars">★★★★<span class="star-empty">★</span></div>
+                        <p class="quote">"Beautiful space and impeccable taste. The weekend wait can stretch a bit, but once you're settled in with an espresso, every minute feels worth it."</p>
+                        <span class="customer-name">Nikolai Petrenko</span>
+                        <span class="customer-tag">Verified Guest</span>
+                    </div>
+
+                    <!-- 8 — 4/5 -->
+                    <div class="testimonial-card">
+                        <span class="rating-badge">4.0 ★</span>
+                        <div class="stars">★★★★<span class="star-empty">★</span></div>
+                        <p class="quote">"The Kyoto Matcha Latte is the finest I've had outside Japan. Ceremonial grade, perfectly whisked, beautifully presented. Will be back very soon."</p>
+                        <span class="customer-name">Priya Sharma</span>
+                        <span class="customer-tag">Verified Guest</span>
+                    </div>
+
+                    <!-- 9 — 3.5/5 -->
+                    <div class="testimonial-card">
+                        <span class="rating-badge">3.5 ★</span>
+                        <div class="stars">★★★<span class="star-half">★</span><span class="star-empty">★</span></div>
+                        <p class="quote">"The Colombia Geisha is extraordinary — complex, floral, memorable. The price point is steep for a regular visit, but perfect for a special occasion."</p>
+                        <span class="customer-name">Luca Bianchi</span>
+                        <span class="customer-tag">Verified Guest</span>
+                    </div>
+
+                    <!-- 10 — 3.5/5 -->
+                    <div class="testimonial-card">
+                        <span class="rating-badge">3.5 ★</span>
+                        <div class="stars">★★★<span class="star-half">★</span><span class="star-empty">★</span></div>
+                        <p class="quote">"Great coffee, undeniable quality. Parking nearby is rough and portions feel small for the price — but I keep coming back, which says it all."</p>
+                        <span class="customer-name">David Kim</span>
+                        <span class="customer-tag">Verified Guest</span>
+                    </div>
+
+                </div>
             </div>
-            <div class="testimonial-card reveal">
-                <div class="stars">★★★★★</div>
-                <p class="quote">"An oasis of calm. The almond financiers pair perfectly with their cortado. It's my go-to spot for Sunday mornings when I want to feel truly pampered."</p>
-                <span class="customer-name">Sophie Laurent</span>
+
+            <div class="carousel-nav">
+                <button class="carousel-btn" id="prevBtn" aria-label="Previous">&#8592;</button>
+                <button class="carousel-btn" id="nextBtn" aria-label="Next">&#8594;</button>
             </div>
-            <div class="testimonial-card reveal">
-                <div class="stars">★★★★★</div>
-                <p class="quote">"From the gorgeous interior design to the meticulously crafted drinks, L'Aura hits every mark. You can taste the dedication in every single cup."</p>
-                <span class="customer-name">Marcus Reed</span>
-            </div>
+            <div class="carousel-dots" id="carouselDots"></div>
         </div>
     </section>
 
