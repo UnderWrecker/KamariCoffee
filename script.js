@@ -72,8 +72,11 @@ if (document.querySelector('.testimonial-swiper') && typeof Swiper !== 'undefine
     });
 }
 
-// ── Gallery Swiper (reservation.html) ───────────────────────────────────
+// ── Gallery Swiper (reservation.html) — cinematic creative effect ────────
 if (document.querySelector('.gallery-swiper') && typeof Swiper !== 'undefined') {
+    const counterEl = document.getElementById('galleryCurrentSlide');
+    const totalSlides = 4; // update if adding more slides
+
     let thumbsSwiper = null;
     if (document.querySelector('.gallery-thumbs')) {
         thumbsSwiper = new Swiper('.gallery-thumbs', {
@@ -83,38 +86,39 @@ if (document.querySelector('.gallery-swiper') && typeof Swiper !== 'undefined') 
             watchSlidesProgress: true,
         });
     }
+
     new Swiper('.gallery-swiper', {
-        effect: 'fade',
+        effect: 'creative',
+        speed: 850,
         loop: true,
-        autoplay: { delay: 3500, disableOnInteraction: false },
+        creativeEffect: {
+            prev: {
+                shadow: true,
+                translate: [0, 0, -500],   // active slide sinks back with shadow
+                opacity: 0.4,
+            },
+            next: {
+                translate: ['100%', 0, 0], // next slide comes in from right
+            },
+        },
+        autoplay: { delay: 4000, disableOnInteraction: false, pauseOnMouseEnter: true },
         pagination: { el: '.gallery-swiper .swiper-pagination', clickable: true },
         navigation: {
             nextEl: '.gallery-swiper .swiper-button-next',
             prevEl: '.gallery-swiper .swiper-button-prev',
         },
         thumbs: thumbsSwiper ? { swiper: thumbsSwiper } : undefined,
+        on: {
+            slideChange: function () {
+                if (counterEl) {
+                    counterEl.textContent = String(this.realIndex + 1).padStart(2, '0');
+                }
+            },
+        },
     });
 }
 
-// ── Flatpickr (reservation.html) ────────────────────────────────────────
-if (typeof flatpickr !== 'undefined') {
-    const dateEl = document.getElementById('visit-date');
-    const timeEl = document.getElementById('visit-time');
-    if (dateEl) flatpickr(dateEl, {
-        minDate: 'today',
-        dateFormat: 'D, M j, Y',
-        disableMobile: true,
-    });
-    if (timeEl) flatpickr(timeEl, {
-        enableTime: true,
-        noCalendar: true,
-        dateFormat: 'h:i K',
-        minTime: '07:00',
-        maxTime: '17:00',
-        minuteIncrement: 30,
-        disableMobile: true,
-    });
-}
+// Flatpickr removed — Plan Your Visit widget was removed from reservation.html
 
 // ── Nutrition Modal (menu.html) ──────────────────────────────────────────
 const modal    = document.getElementById('nutrition-modal');
