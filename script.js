@@ -160,28 +160,19 @@ if (typeof Lenis !== 'undefined') {
     requestAnimationFrame(raf);
 }
 
-// ── GSAP Hero Sticky Scroll Sequence (index.html) ────────────────────────
-if (document.getElementById('hero') && typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
-    gsap.registerPlugin(ScrollTrigger);
-
-    const tl = gsap.timeline({
-        scrollTrigger: {
-            trigger: '#hero',
-            start: 'top top',
-            end: '+=200%', // Pin for 2 viewport heights
-            pin: true,
-            scrub: 1, // Smooth scrubbing
-        }
+// ── Preloader (index.html) ────────────────────────────────────────────────
+const preloader = document.getElementById('preloader');
+if (preloader) {
+    window.addEventListener('load', () => {
+        setTimeout(() => {
+            preloader.style.opacity = '0';
+            preloader.style.visibility = 'hidden';
+            setTimeout(() => {
+                document.body.classList.add('loaded'); // triggers hero text fadeUp
+                preloader.style.display = 'none';
+            }, 800); // Wait for CSS transition
+        }, 1000); // 1 second display
     });
-
-    // Sequence:
-    // 1. Logo fades out and scales up
-    tl.to('.hero-logo-intro', { opacity: 0, scale: 1.5, duration: 1 })
-      // 2. Background image and overlay fade in, image scales down to normal
-      .to('.hero-bg', { opacity: 1, scale: 1, duration: 2 }, "-=0.5")
-      .to('.hero-overlay', { opacity: 1, duration: 2 }, "<")
-      // 3. Main text and button fade in and slide up
-      .to('.hero-content', { opacity: 1, y: 0, duration: 1.5 }, "-=0.5");
 }
 
 // ── Rough Notation (menu.html) ────────────────────────────────────────────
