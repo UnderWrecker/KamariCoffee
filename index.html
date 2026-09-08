@@ -263,6 +263,19 @@
                 order: -1;
             }
         }
+
+        /* ── Ad Blocker ─────────────────────────────────────── */
+        a[href*="elfsight.com"], 
+        .eapps-link, 
+        .eui-banner,
+        [class^="elfsight-app-"] > a,
+        [class^="elfsight-app-"] > div > a,
+        div[class*="eapps-"] a[href*="elfsight"] {
+            display: none !important;
+            opacity: 0 !important;
+            visibility: hidden !important;
+            pointer-events: none !important;
+        }
     </style>
 </head>
 
