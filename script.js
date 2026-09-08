@@ -100,21 +100,18 @@ const preloaderImg = document.querySelector('.preloader-logo-img');
 if (preloader) {
     window.addEventListener('load', () => {
         setTimeout(() => {
-            // t=800ms: start fading logo (0.4s CSS transition)
             if (preloaderImg) {
                 preloaderImg.classList.add('fade-out');
             }
             setTimeout(() => {
-                // t=1200ms: logo faded — now fade out the whole overlay (0.4s)
                 preloader.style.opacity = '0';
                 preloader.style.visibility = 'hidden';
                 setTimeout(() => {
-                    // t=1600ms: overlay gone — trigger hero text (appears ~0.5s after logo disappeared)
-                    document.body.classList.add('loaded');
+                    document.body.classList.add('loaded'); // triggers hero text fadeUp
                     preloader.style.display = 'none';
-                }, 400);
-            }, 400); // wait for logo fade
-        }, 800); // display logo for 0.8s
+                }, 200); // overlay fade out
+            }, 300); // wait for logo fade (0.3s)
+        }, 500); // show logo for 0.5s
     });
 }
 
