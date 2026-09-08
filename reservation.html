@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,7 +8,9 @@
     <meta name="description" content="Find L'Aura Café — our location, hours, and a look at our beautiful storefront.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Inter:wght@300;400;500&display=swap"
+        rel="stylesheet">
     <!-- Tailwind CSS -->
     <script>tailwind.config = { corePlugins: { preflight: false }, theme: { extend: { colors: { gold: '#d4af37' } } } }</script>
     <script src="https://cdn.tailwindcss.com"></script>
@@ -20,7 +23,8 @@
     <style>
         /* ── Gallery Section fills screen from nav ─────────── */
         #gallery-section {
-            padding-top: calc(72px + 3rem);   /* navbar height + breathing room */
+            padding-top: calc(72px + 3rem);
+            /* navbar height + breathing room */
             padding-bottom: 3rem;
             background: var(--color-bg);
             padding-left: 5%;
@@ -32,7 +36,10 @@
             margin-bottom: 2.5rem;
         }
 
-        .gallery-wrap { max-width: 1100px; margin: 0 auto; }
+        .gallery-wrap {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
 
         /* ── Fancy Gallery Swiper ───────────────────────────── */
         .gallery-swiper {
@@ -46,7 +53,8 @@
 
         /* Ken Burns zoom on active slide image */
         .gallery-swiper .swiper-slide img {
-            width: 100%; height: 100%;
+            width: 100%;
+            height: 100%;
             object-fit: cover;
             display: block;
             transform: scale(1.08);
@@ -58,21 +66,24 @@
         }
 
         @keyframes kenBurns {
-            from { transform: scale(1.08); }
-            to   { transform: scale(1.18); }
+            from {
+                transform: scale(1.08);
+            }
+
+            to {
+                transform: scale(1.18);
+            }
         }
 
         /* Rich gradient overlay */
         .gallery-slide-overlay {
             position: absolute;
             inset: 0;
-            background: linear-gradient(
-                to bottom,
-                rgba(13,12,12,0.15) 0%,
-                transparent 35%,
-                transparent 55%,
-                rgba(13,12,12,0.75) 100%
-            );
+            background: linear-gradient(to bottom,
+                    rgba(13, 12, 12, 0.15) 0%,
+                    transparent 35%,
+                    transparent 55%,
+                    rgba(13, 12, 12, 0.75) 100%);
             z-index: 1;
             pointer-events: none;
         }
@@ -80,7 +91,9 @@
         /* Caption — slides up when active */
         .gallery-slide-caption {
             position: absolute;
-            bottom: 0; left: 0; right: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
             padding: 2rem 2rem 1.6rem;
             z-index: 2;
             pointer-events: none;
@@ -113,12 +126,13 @@
         /* Slide counter ── top-right corner */
         .gallery-counter {
             position: absolute;
-            top: 1.5rem; right: 1.5rem;
+            top: 1.5rem;
+            right: 1.5rem;
             z-index: 10;
             display: flex;
             align-items: baseline;
             gap: 0.3rem;
-            background: rgba(13,12,12,0.55);
+            background: rgba(13, 12, 12, 0.55);
             backdrop-filter: blur(6px);
             padding: 0.4rem 0.8rem;
             border-radius: 2px;
@@ -133,14 +147,14 @@
         }
 
         .counter-sep {
-            color: rgba(255,255,255,0.3);
+            color: rgba(255, 255, 255, 0.3);
             font-size: 0.8rem;
             margin: 0 0.1rem;
         }
 
         .counter-total {
             font-size: 0.85rem;
-            color: rgba(255,255,255,0.45);
+            color: rgba(255, 255, 255, 0.45);
             letter-spacing: 1px;
         }
 
@@ -149,7 +163,8 @@
         .gallery-swiper .swiper-button-prev {
             color: var(--color-accent);
             background: rgba(13, 12, 12, 0.6);
-            width: 48px; height: 48px;
+            width: 48px;
+            height: 48px;
             border-radius: 2px;
             border: 1px solid rgba(212, 175, 55, 0.25);
             backdrop-filter: blur(6px);
@@ -164,13 +179,30 @@
         }
 
         .gallery-swiper .swiper-button-next::after,
-        .gallery-swiper .swiper-button-prev::after { font-size: 1rem; font-weight: 700; }
+        .gallery-swiper .swiper-button-prev::after {
+            font-size: 1rem;
+            font-weight: 700;
+        }
 
-        .gallery-swiper .swiper-pagination-bullet { background: rgba(255,255,255,0.4); opacity:1; width:8px; height:8px; }
-        .gallery-swiper .swiper-pagination-bullet-active { background: var(--color-accent); width: 24px; border-radius: 4px; }
+        .gallery-swiper .swiper-pagination-bullet {
+            background: rgba(255, 255, 255, 0.4);
+            opacity: 1;
+            width: 8px;
+            height: 8px;
+        }
+
+        .gallery-swiper .swiper-pagination-bullet-active {
+            background: var(--color-accent);
+            width: 24px;
+            border-radius: 4px;
+        }
 
         /* Thumb strip */
-        .gallery-thumbs { margin-top: 0.7rem; height: 88px; }
+        .gallery-thumbs {
+            margin-top: 0.7rem;
+            height: 88px;
+        }
+
         .gallery-thumbs .swiper-slide {
             opacity: 0.38;
             cursor: pointer;
@@ -179,16 +211,23 @@
             border: 2px solid transparent;
             transition: opacity 0.3s, border-color 0.3s;
         }
+
         .gallery-thumbs .swiper-slide-thumb-active {
             opacity: 1;
             border-color: var(--color-accent);
         }
-        .gallery-thumbs img { width:100%; height:88px; object-fit:cover; display:block; }
+
+        .gallery-thumbs img {
+            width: 100%;
+            height: 88px;
+            object-fit: cover;
+            display: block;
+        }
 
         /* ── Contact & Map ──────────────────────────────────── */
         #reach-wrap {
-            background: linear-gradient(rgba(13,12,12,0.97), rgba(13,12,12,0.97)),
-                        url('https://images.unsplash.com/photo-1497935586351-b67a49e012bf?q=80&w=2071&auto=format&fit=crop') center/cover fixed;
+            background: linear-gradient(rgba(13, 12, 12, 0.97), rgba(13, 12, 12, 0.97)),
+                url('https://images.unsplash.com/photo-1497935586351-b67a49e012bf?q=80&w=2071&auto=format&fit=crop') center/cover fixed;
             padding: 5rem 5% 8rem;
         }
 
@@ -226,8 +265,16 @@
             align-items: flex-start;
         }
 
-        .contact-icon { color: var(--color-accent); flex-shrink: 0; margin-top: 2px; }
-        .contact-icon svg { width: 18px; height: 18px; }
+        .contact-icon {
+            color: var(--color-accent);
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .contact-icon svg {
+            width: 18px;
+            height: 18px;
+        }
 
         .contact-label {
             display: block;
@@ -238,7 +285,11 @@
             margin-bottom: 0.3rem;
         }
 
-        .contact-value { font-size: 1.05rem; color: var(--color-text); line-height: 1.6; }
+        .contact-value {
+            font-size: 1.05rem;
+            color: var(--color-text);
+            line-height: 1.6;
+        }
 
         .ornament-divider {
             text-align: center;
@@ -249,29 +300,61 @@
             margin: 1.5rem 0;
         }
 
-        .map-side { display: flex; flex-direction: column; gap: 1.2rem; }
-        .map-header { font-size: 2.2rem; color: var(--color-accent); font-family: var(--font-heading); }
-        .map-desc { font-size: 0.93rem; color: #888; line-height: 1.7; }
+        .map-side {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+        }
+
+        .map-header {
+            font-size: 2.2rem;
+            color: var(--color-accent);
+            font-family: var(--font-heading);
+        }
+
+        .map-desc {
+            font-size: 0.93rem;
+            color: #888;
+            line-height: 1.7;
+        }
 
         .map-container {
-            border: 1px solid rgba(255,255,255,0.08);
+            border: 1px solid rgba(255, 255, 255, 0.08);
             border-radius: 4px;
             overflow: hidden;
             height: 300px;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.5);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
         }
-        .map-container iframe { width: 100%; height: 100%; border: 0; }
 
-        @media (max-width: 992px) { .reach-grid { grid-template-columns: 1fr; gap: 3rem; } }
-        @media (max-width: 600px) { .gallery-swiper { height: 320px; } }
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        @media (max-width: 992px) {
+            .reach-grid {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .gallery-swiper {
+                height: 320px;
+            }
+        }
     </style>
 </head>
+
 <body>
 
     <nav id="navbar">
         <a href="index.html" class="logo flex items-center gap-2">
             <img src="sun.png" alt="Kamari Coffee" style="height: 32px;">
-            <span style="color: var(--color-accent); font-family: var(--font-heading); font-size: 1.5rem; letter-spacing: 1px;">Kamari Coffee</span>
+            <span
+                style="color: var(--color-accent); font-family: var(--font-heading); font-size: 1.5rem; letter-spacing: 1px;">Kamari
+                Coffee</span>
         </a>
         <div class="nav-links">
             <a href="index.html#hero">Home</a>
@@ -302,7 +385,8 @@
 
                 <div class="swiper-wrapper">
                     <div class="swiper-slide">
-                        <img src="https://images.unsplash.com/photo-1600093463592-8e36ae95ef56?q=80&w=1974&auto=format&fit=crop" alt="Main entrance">
+                        <img src="https://images.unsplash.com/photo-1600093463592-8e36ae95ef56?q=80&w=1974&auto=format&fit=crop"
+                            alt="Main entrance">
                         <div class="gallery-slide-overlay"></div>
                         <div class="gallery-slide-caption">
                             <span class="caption-label">Exterior</span>
@@ -310,7 +394,8 @@
                         </div>
                     </div>
                     <div class="swiper-slide">
-                        <img src="https://images.unsplash.com/photo-1521017432531-fbd92d768814?q=80&w=1974&auto=format&fit=crop" alt="Corner seating">
+                        <img src="https://images.unsplash.com/photo-1521017432531-fbd92d768814?q=80&w=1974&auto=format&fit=crop"
+                            alt="Corner seating">
                         <div class="gallery-slide-overlay"></div>
                         <div class="gallery-slide-caption">
                             <span class="caption-label">Interior</span>
@@ -318,7 +403,8 @@
                         </div>
                     </div>
                     <div class="swiper-slide">
-                        <img src="https://images.unsplash.com/photo-1559925393-8be0ec4767c8?q=80&w=1974&auto=format&fit=crop" alt="Outdoor terrace">
+                        <img src="https://images.unsplash.com/photo-1559925393-8be0ec4767c8?q=80&w=1974&auto=format&fit=crop"
+                            alt="Outdoor terrace">
                         <div class="gallery-slide-overlay"></div>
                         <div class="gallery-slide-caption">
                             <span class="caption-label">Al Fresco</span>
@@ -326,7 +412,8 @@
                         </div>
                     </div>
                     <div class="swiper-slide">
-                        <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?q=80&w=2047&auto=format&fit=crop" alt="Interior ambiance">
+                        <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?q=80&w=2047&auto=format&fit=crop"
+                            alt="Interior ambiance">
                         <div class="gallery-slide-overlay"></div>
                         <div class="gallery-slide-caption">
                             <span class="caption-label">Ambiance</span>
@@ -343,10 +430,18 @@
             <!-- Thumbnail strip -->
             <div class="swiper gallery-thumbs">
                 <div class="swiper-wrapper">
-                    <div class="swiper-slide"><img src="https://images.unsplash.com/photo-1600093463592-8e36ae95ef56?q=80&w=400&auto=format&fit=crop" alt="Entrance thumb"></div>
-                    <div class="swiper-slide"><img src="https://images.unsplash.com/photo-1521017432531-fbd92d768814?q=80&w=400&auto=format&fit=crop" alt="Seating thumb"></div>
-                    <div class="swiper-slide"><img src="https://images.unsplash.com/photo-1559925393-8be0ec4767c8?q=80&w=400&auto=format&fit=crop" alt="Terrace thumb"></div>
-                    <div class="swiper-slide"><img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?q=80&w=400&auto=format&fit=crop" alt="Interior thumb"></div>
+                    <div class="swiper-slide"><img
+                            src="https://images.unsplash.com/photo-1600093463592-8e36ae95ef56?q=80&w=400&auto=format&fit=crop"
+                            alt="Entrance thumb"></div>
+                    <div class="swiper-slide"><img
+                            src="https://images.unsplash.com/photo-1521017432531-fbd92d768814?q=80&w=400&auto=format&fit=crop"
+                            alt="Seating thumb"></div>
+                    <div class="swiper-slide"><img
+                            src="https://images.unsplash.com/photo-1559925393-8be0ec4767c8?q=80&w=400&auto=format&fit=crop"
+                            alt="Terrace thumb"></div>
+                    <div class="swiper-slide"><img
+                            src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?q=80&w=400&auto=format&fit=crop"
+                            alt="Interior thumb"></div>
                 </div>
             </div>
         </div>
@@ -401,7 +496,8 @@
 
             <div class="map-side" data-aos="fade-left" data-aos-delay="150">
                 <h3 class="map-header">Find Us Here</h3>
-                <p class="map-desc">We're nestled in the heart of SoHo, New York — just a short walk from Spring Street Station. Look for the warm amber glow through our vintage window display.</p>
+                <p class="map-desc">We're nestled in the heart of SoHo, New York — just a short walk from Spring Street
+                    Station. Look for the warm amber glow through our vintage window display.</p>
                 <div class="map-container">
                     <iframe src="https://maps.google.com/maps?q=SoHo,%20New%20York&t=&z=14&ie=UTF8&iwloc=&output=embed"
                         allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
@@ -431,4 +527,5 @@
     <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
     <script src="script.js"></script>
 </body>
+
 </html>
