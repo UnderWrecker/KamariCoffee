@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,7 +8,9 @@
     <meta name="description" content="Experience the finest artisanal coffee and delicate pastries at L'Aura Café.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Inter:wght@300;400;500&display=swap"
+        rel="stylesheet">
     <!-- Tailwind CSS (preflight disabled — preserves our dark theme variables) -->
     <script>tailwind.config = { corePlugins: { preflight: false }, theme: { extend: { colors: { gold: '#d4af37', 'cafe-dark': '#0d0c0c' } } } }</script>
     <script src="https://cdn.tailwindcss.com"></script>
@@ -21,7 +24,10 @@
         /* ── Preloader ──────────────────────────────────────── */
         #preloader {
             position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
             background: #0d0c0c;
             z-index: 9999;
             display: flex;
@@ -29,11 +35,13 @@
             justify-content: center;
             transition: opacity 0.8s ease, visibility 0.8s ease;
         }
+
         .preloader-logo-img {
             width: 150px;
             height: auto;
             transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.8s ease;
         }
+
         .preloader-logo-img.disperse {
             transform: scale(8);
             opacity: 0;
@@ -48,25 +56,40 @@
             position: relative;
             overflow: hidden;
         }
+
         .hero-bg {
-            position: absolute; top: 0; left: 0;
-            width: 100%; height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
             background-image: url('https://images.unsplash.com/photo-1554118811-1e0d58224f24?q=80&w=2047&auto=format&fit=crop');
             background-size: cover;
             background-position: center;
             z-index: -2;
             animation: slowZoom 20s infinite alternate;
         }
+
         @keyframes slowZoom {
-            from { transform: scale(1); }
-            to   { transform: scale(1.1); }
+            from {
+                transform: scale(1);
+            }
+
+            to {
+                transform: scale(1.1);
+            }
         }
+
         .hero-overlay {
-            position: absolute; top: 0; left: 0;
-            width: 100%; height: 100%;
-            background: linear-gradient(to bottom, rgba(13,12,12,0.5) 0%, rgba(13,12,12,1) 100%);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(13, 12, 12, 0.5) 0%, rgba(13, 12, 12, 1) 100%);
             z-index: -1;
         }
+
         .hero-content {
             text-align: center;
             max-width: 800px;
@@ -74,11 +97,19 @@
             opacity: 0;
             transform: translateY(30px);
         }
+
         /* Triggered via JS after preloader */
         body.loaded .hero-content {
             animation: fadeUp 1s 0.3s forwards ease-out;
         }
-        @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+
+        @keyframes fadeUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
         .hero-subtitle {
             font-size: 1rem;
             text-transform: uppercase;
@@ -87,7 +118,13 @@
             margin-bottom: 1.5rem;
             display: block;
         }
-        .hero-title { font-size: 5rem; line-height: 1.1; margin-bottom: 2rem; font-style: italic; }
+
+        .hero-title {
+            font-size: 5rem;
+            line-height: 1.1;
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
 
         /* ── Grid Sections ──────────────────────────────────── */
         .grid-2 {
@@ -98,16 +135,38 @@
             max-width: 1200px;
             margin: 0 auto;
         }
+
         .img-wrapper {
             position: relative;
             border-radius: 4px;
             overflow: hidden;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
         }
-        .img-wrapper img { width: 100%; height: auto; display: block; transition: var(--transition); }
-        .img-wrapper:hover img { transform: scale(1.05); }
-        .text-content p { margin-bottom: 1.5rem; color: #aaa; font-size: 1.1rem; }
-        .signature { font-family: var(--font-heading); font-style: italic; font-size: 2rem; color: var(--color-accent); margin-top: 2rem; }
+
+        .img-wrapper img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: var(--transition);
+        }
+
+        .img-wrapper:hover img {
+            transform: scale(1.05);
+        }
+
+        .text-content p {
+            margin-bottom: 1.5rem;
+            color: #aaa;
+            font-size: 1.1rem;
+        }
+
+        .signature {
+            font-family: var(--font-heading);
+            font-style: italic;
+            font-size: 2rem;
+            color: var(--color-accent);
+            margin-top: 2rem;
+        }
 
         /* ── Testimonial Cards ──────────────────────────────── */
         .testimonial-card {
@@ -121,19 +180,25 @@
             height: 100%;
             box-sizing: border-box;
         }
+
         .testimonial-swiper .swiper-slide-active .testimonial-card {
             border-color: rgba(212, 175, 55, 0.3);
             background: rgba(255, 255, 255, 0.05);
         }
+
         .rating-badge {
-            position: absolute; top: 1rem; right: 1rem;
-            font-size: 0.68rem; letter-spacing: 1px;
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            font-size: 0.68rem;
+            letter-spacing: 1px;
             color: var(--color-accent);
             background: rgba(212, 175, 55, 0.08);
             border: 1px solid rgba(212, 175, 55, 0.2);
             padding: 0.18rem 0.45rem;
             border-radius: 2px;
         }
+
         .stars {
             color: var(--color-accent);
             margin-bottom: 1rem;
@@ -142,31 +207,73 @@
             justify-content: center;
             gap: 1px;
         }
-        .star-empty { color: rgba(255, 255, 255, 0.15); }
-        .star-half { position: relative; display: inline-block; color: rgba(255, 255, 255, 0.15); }
+
+        .star-empty {
+            color: rgba(255, 255, 255, 0.15);
+        }
+
+        .star-half {
+            position: relative;
+            display: inline-block;
+            color: rgba(255, 255, 255, 0.15);
+        }
+
         .star-half::before {
             content: '\2605';
-            position: absolute; left: 0;
-            width: 55%; overflow: hidden;
+            position: absolute;
+            left: 0;
+            width: 55%;
+            overflow: hidden;
             color: var(--color-accent);
         }
-        .quote { font-style: italic; margin-bottom: 1.8rem; color: #ccc; line-height: 1.75; font-size: 0.93rem; }
-        .customer-name { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 2px; color: var(--color-accent); }
-        .customer-tag { display: block; font-size: 0.72rem; color: #555; margin-top: 0.3rem; letter-spacing: 1px; }
+
+        .quote {
+            font-style: italic;
+            margin-bottom: 1.8rem;
+            color: #ccc;
+            line-height: 1.75;
+            font-size: 0.93rem;
+        }
+
+        .customer-name {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--color-accent);
+        }
+
+        .customer-tag {
+            display: block;
+            font-size: 0.72rem;
+            color: #555;
+            margin-top: 0.3rem;
+            letter-spacing: 1px;
+        }
 
         @media (max-width: 768px) {
-            .grid-2 { grid-template-columns: 1fr; }
-            .hero-title { font-size: 3.5rem; }
-            .order-reverse { order: -1; }
+            .grid-2 {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-title {
+                font-size: 3.5rem;
+            }
+
+            .order-reverse {
+                order: -1;
+            }
         }
     </style>
 </head>
+
 <body>
 
     <nav id="navbar">
         <a href="index.html" class="logo flex items-center gap-2">
             <img src="sun.png" alt="Kamari Coffee" style="height: 32px;">
-            <span style="color: var(--color-accent); font-family: var(--font-heading); font-size: 1.5rem; letter-spacing: 1px;">Kamari Coffee</span>
+            <span
+                style="color: var(--color-accent); font-family: var(--font-heading); font-size: 1.5rem; letter-spacing: 1px;">Kamari
+                Coffee</span>
         </a>
         <button id="mobileToggle" aria-label="Toggle navigation" style="display: none;">
             <i data-lucide="menu" style="width:24px;height:24px;"></i>
@@ -182,9 +289,10 @@
     <section id="hero">
         <div class="hero-bg"></div>
         <div class="hero-overlay"></div>
-        <div class="hero-content">
-            <span class="hero-subtitle">Artisanal Coffee &amp; Roastery</span>
-            <h1 class="hero-title">Awaken Your<br>Senses.</h1>
+        <div class="hero-content" style="max-width: 900px; margin: 0 auto;">
+            <span class="hero-subtitle">Est. 2018</span>
+            <h1 class="hero-title" style="margin-bottom: 1rem;">Our Story</h1>
+            <p style="color: #ddd; font-size: 1.15rem; line-height: 1.8; margin-bottom: 2.5rem; font-family: var(--font-body);">Born from a passion for ethically sourced beans and the perfect roast, Kamari Coffee began as a humble neighborhood cart. Today, we invite you to experience the culmination of our journey — a sanctuary where every cup tells a story of craftsmanship, warmth, and community.</p>
             <a href="menu.html" class="btn">Explore Our Menu</a>
         </div>
     </section>
@@ -208,16 +316,20 @@
             <div class="swiper gallery-swiper">
                 <div class="swiper-wrapper">
                     <div class="swiper-slide">
-                        <img src="https://images.unsplash.com/photo-1600093463592-8e36ae95ef56?q=80&w=1974&auto=format&fit=crop" alt="Main entrance">
+                        <img src="https://images.unsplash.com/photo-1600093463592-8e36ae95ef56?q=80&w=1974&auto=format&fit=crop"
+                            alt="Main entrance">
                     </div>
                     <div class="swiper-slide">
-                        <img src="https://images.unsplash.com/photo-1521017432531-fbd92d768814?q=80&w=1974&auto=format&fit=crop" alt="Corner seating">
+                        <img src="https://images.unsplash.com/photo-1521017432531-fbd92d768814?q=80&w=1974&auto=format&fit=crop"
+                            alt="Corner seating">
                     </div>
                     <div class="swiper-slide">
-                        <img src="https://images.unsplash.com/photo-1559925393-8be0ec4767c8?q=80&w=1974&auto=format&fit=crop" alt="Outdoor terrace">
+                        <img src="https://images.unsplash.com/photo-1559925393-8be0ec4767c8?q=80&w=1974&auto=format&fit=crop"
+                            alt="Outdoor terrace">
                     </div>
                     <div class="swiper-slide">
-                        <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?q=80&w=2047&auto=format&fit=crop" alt="Interior ambiance">
+                        <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?q=80&w=2047&auto=format&fit=crop"
+                            alt="Interior ambiance">
                     </div>
                 </div>
 
@@ -277,7 +389,8 @@
 
             <div class="map-side" data-aos="fade-left" data-aos-delay="150">
                 <h3 class="map-header">Find Us Here</h3>
-                <p class="map-desc">We're nestled in the heart of SoHo, New York — just a short walk from Spring Street Station. Look for the warm amber glow through our vintage window display.</p>
+                <p class="map-desc">We're nestled in the heart of SoHo, New York — just a short walk from Spring Street
+                    Station. Look for the warm amber glow through our vintage window display.</p>
                 <div class="map-container">
                     <iframe src="https://maps.google.com/maps?q=SoHo,%20New%20York&t=&z=14&ie=UTF8&iwloc=&output=embed"
                         allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
@@ -303,4 +416,5 @@
     <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
     <script src="script.js"></script>
 </body>
+
 </html>
