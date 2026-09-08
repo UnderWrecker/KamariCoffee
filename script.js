@@ -37,48 +37,16 @@ if (mobileToggle && navLinks) {
 }
 
 
-// ── Gallery Swiper (reservation.html) — cinematic creative effect ────────
+// ── Gallery Swiper (index.html) — simple horizontal slider ────────
 if (document.querySelector('.gallery-swiper') && typeof Swiper !== 'undefined') {
-    const counterEl = document.getElementById('galleryCurrentSlide');
-    const totalSlides = 4; // update if adding more slides
-
-    let thumbsSwiper = null;
-    if (document.querySelector('.gallery-thumbs')) {
-        thumbsSwiper = new Swiper('.gallery-thumbs', {
-            spaceBetween: 10,
-            slidesPerView: 4,
-            freeMode: true,
-            watchSlidesProgress: true,
-        });
-    }
-
     new Swiper('.gallery-swiper', {
-        effect: 'creative',
-        speed: 850,
+        speed: 600,
         loop: true,
-        creativeEffect: {
-            prev: {
-                shadow: true,
-                translate: [0, 0, -500],   // active slide sinks back with shadow
-                opacity: 0.4,
-            },
-            next: {
-                translate: ['100%', 0, 0], // next slide comes in from right
-            },
-        },
         autoplay: { delay: 4000, disableOnInteraction: false, pauseOnMouseEnter: true },
         pagination: { el: '.gallery-swiper .swiper-pagination', clickable: true },
         navigation: {
             nextEl: '.gallery-swiper .swiper-button-next',
             prevEl: '.gallery-swiper .swiper-button-prev',
-        },
-        thumbs: thumbsSwiper ? { swiper: thumbsSwiper } : undefined,
-        on: {
-            slideChange: function () {
-                if (counterEl) {
-                    counterEl.textContent = String(this.realIndex + 1).padStart(2, '0');
-                }
-            },
         },
     });
 }
@@ -127,15 +95,22 @@ if (typeof Lenis !== 'undefined') {
 
 // ── Preloader (index.html) ────────────────────────────────────────────────
 const preloader = document.getElementById('preloader');
+const preloaderImg = document.querySelector('.preloader-logo-img');
+
 if (preloader) {
     window.addEventListener('load', () => {
         setTimeout(() => {
-            preloader.style.opacity = '0';
-            preloader.style.visibility = 'hidden';
+            if (preloaderImg) {
+                preloaderImg.classList.add('disperse');
+            }
             setTimeout(() => {
-                document.body.classList.add('loaded'); // triggers hero text fadeUp
-                preloader.style.display = 'none';
-            }, 800); // Wait for CSS transition
+                preloader.style.opacity = '0';
+                preloader.style.visibility = 'hidden';
+                setTimeout(() => {
+                    document.body.classList.add('loaded'); // triggers hero text fadeUp
+                    preloader.style.display = 'none';
+                }, 800); // Wait for CSS transition
+            }, 800); // Wait for disperse animation
         }, 1000); // 1 second display
     });
 }

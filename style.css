@@ -500,99 +500,6 @@ span.flatpickr-weekday {
     width: 100%; height: 100%;
     object-fit: cover;
     display: block;
-    transform: scale(1.08);
-    transition: transform 0s;
-}
-
-.gallery-swiper .swiper-slide-active img {
-    animation: kenBurns 6s ease-out forwards;
-}
-
-@keyframes kenBurns {
-    from { transform: scale(1.08); }
-    to   { transform: scale(1.18); }
-}
-
-/* Rich gradient overlay */
-.gallery-slide-overlay {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(
-        to bottom,
-        rgba(13,12,12,0.15) 0%,
-        transparent 35%,
-        transparent 55%,
-        rgba(13,12,12,0.75) 100%
-    );
-    z-index: 1;
-    pointer-events: none;
-}
-
-/* Caption — slides up when active */
-.gallery-slide-caption {
-    position: absolute;
-    bottom: 0; left: 0; right: 0;
-    padding: 2rem 2rem 1.6rem;
-    z-index: 2;
-    pointer-events: none;
-    transform: translateY(8px);
-    opacity: 0;
-    transition: transform 0.6s 0.3s ease, opacity 0.6s 0.3s ease;
-}
-
-.swiper-slide-active .gallery-slide-caption {
-    transform: translateY(0);
-    opacity: 1;
-}
-
-.caption-label {
-    font-size: 0.72rem;
-    text-transform: uppercase;
-    letter-spacing: 3px;
-    color: var(--color-accent);
-    display: block;
-    margin-bottom: 0.25rem;
-}
-
-.caption-title {
-    font-family: var(--font-heading);
-    font-size: 1.8rem;
-    color: #fff;
-    font-style: italic;
-}
-
-/* Slide counter ── top-right corner */
-.gallery-counter {
-    position: absolute;
-    top: 1.5rem; right: 1.5rem;
-    z-index: 10;
-    display: flex;
-    align-items: baseline;
-    gap: 0.3rem;
-    background: rgba(13,12,12,0.55);
-    backdrop-filter: blur(6px);
-    padding: 0.4rem 0.8rem;
-    border-radius: 2px;
-    border: 1px solid rgba(212, 175, 55, 0.2);
-}
-
-.counter-current {
-    font-family: var(--font-heading);
-    font-size: 1.6rem;
-    color: var(--color-accent);
-    line-height: 1;
-}
-
-.counter-sep {
-    color: rgba(255,255,255,0.3);
-    font-size: 0.8rem;
-    margin: 0 0.1rem;
-}
-
-.counter-total {
-    font-size: 0.85rem;
-    color: rgba(255,255,255,0.45);
-    letter-spacing: 1px;
 }
 
 /* Swiper nav buttons — custom style */
@@ -620,21 +527,6 @@ span.flatpickr-weekday {
 .gallery-swiper .swiper-pagination-bullet { background: rgba(255,255,255,0.4); opacity:1; width:8px; height:8px; }
 .gallery-swiper .swiper-pagination-bullet-active { background: var(--color-accent); width: 24px; border-radius: 4px; }
 
-/* Thumb strip */
-.gallery-thumbs { margin-top: 0.7rem; height: 88px; }
-.gallery-thumbs .swiper-slide {
-    opacity: 0.38;
-    cursor: pointer;
-    border-radius: 3px;
-    overflow: hidden;
-    border: 2px solid transparent;
-    transition: opacity 0.3s, border-color 0.3s;
-}
-.gallery-thumbs .swiper-slide-thumb-active {
-    opacity: 1;
-    border-color: var(--color-accent);
-}
-.gallery-thumbs img { width:100%; height:88px; object-fit:cover; display:block; }
 
 /* ── Contact & Map ──────────────────────────────────── */
 #reach-wrap {

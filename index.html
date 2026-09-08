@@ -29,12 +29,14 @@
             justify-content: center;
             transition: opacity 0.8s ease, visibility 0.8s ease;
         }
-        .preloader-logo {
-            font-family: var(--font-heading);
-            font-size: 5rem;
-            color: var(--color-accent);
-            text-transform: uppercase;
-            letter-spacing: 4px;
+        .preloader-logo-img {
+            width: 150px;
+            height: auto;
+            transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.8s ease;
+        }
+        .preloader-logo-img.disperse {
+            transform: scale(8);
+            opacity: 0;
         }
 
         /* ── Hero ───────────────────────────────────────────── */
@@ -163,21 +165,16 @@
 
     <nav id="navbar">
         <a href="index.html" class="logo flex items-center gap-2">
-            <i data-lucide="coffee" style="width:24px;height:24px;color:var(--color-accent);margin-right:6px;"></i>L'Aura
+            <img src="sun.png" alt="L'Aura" style="height: 32px;">
         </a>
-        <div class="nav-links">
-            <a href="#hero" class="active">Home</a>
-            <a href="#instagram-showcase">Instagram</a>
-            <a href="#reach-wrap">Reach Us</a>
-        </div>
-        <button id="mobileToggle" aria-label="Toggle navigation">
+        <button id="mobileToggle" aria-label="Toggle navigation" style="display: none;">
             <i data-lucide="menu" style="width:24px;height:24px;"></i>
         </button>
     </nav>
 
     <!-- Preloader -->
     <div id="preloader">
-        <div class="preloader-logo">L'Aura</div>
+        <img src="sun.png" class="preloader-logo-img" alt="Sun">
     </div>
 
     <!-- Hero -->
@@ -198,7 +195,7 @@
         <p style="color: #888; max-width: 500px; margin: 0 auto; line-height: 1.6;">Join us on Instagram for daily aesthetic pours, fresh pastry drops, and a behind-the-scenes look at our roasting process.</p>
     </section>
 
-    <!-- Gallery — full-width cinematic slider -->
+    <!-- Gallery — simple horizontal slider -->
     <section id="gallery-section">
         <div class="gallery-section-header" data-aos="fade-up">
             <span class="section-subtitle">A Glimpse of L'Aura</span>
@@ -206,63 +203,26 @@
         </div>
 
         <div class="gallery-wrap" data-aos="fade-up" data-aos-delay="100">
-            <!-- Main cinematic slider -->
+            <!-- Simple slider -->
             <div class="swiper gallery-swiper">
-                <!-- Slide counter overlay -->
-                <div class="gallery-counter">
-                    <span class="counter-current" id="galleryCurrentSlide">01</span>
-                    <span class="counter-sep">/</span>
-                    <span class="counter-total">04</span>
-                </div>
-
                 <div class="swiper-wrapper">
                     <div class="swiper-slide">
                         <img src="https://images.unsplash.com/photo-1600093463592-8e36ae95ef56?q=80&w=1974&auto=format&fit=crop" alt="Main entrance">
-                        <div class="gallery-slide-overlay"></div>
-                        <div class="gallery-slide-caption">
-                            <span class="caption-label">Exterior</span>
-                            <span class="caption-title">Main Entrance</span>
-                        </div>
                     </div>
                     <div class="swiper-slide">
                         <img src="https://images.unsplash.com/photo-1521017432531-fbd92d768814?q=80&w=1974&auto=format&fit=crop" alt="Corner seating">
-                        <div class="gallery-slide-overlay"></div>
-                        <div class="gallery-slide-caption">
-                            <span class="caption-label">Interior</span>
-                            <span class="caption-title">Corner Seating</span>
-                        </div>
                     </div>
                     <div class="swiper-slide">
                         <img src="https://images.unsplash.com/photo-1559925393-8be0ec4767c8?q=80&w=1974&auto=format&fit=crop" alt="Outdoor terrace">
-                        <div class="gallery-slide-overlay"></div>
-                        <div class="gallery-slide-caption">
-                            <span class="caption-label">Al Fresco</span>
-                            <span class="caption-title">Outdoor Terrace</span>
-                        </div>
                     </div>
                     <div class="swiper-slide">
                         <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?q=80&w=2047&auto=format&fit=crop" alt="Interior ambiance">
-                        <div class="gallery-slide-overlay"></div>
-                        <div class="gallery-slide-caption">
-                            <span class="caption-label">Ambiance</span>
-                            <span class="caption-title">Interior Warmth</span>
-                        </div>
                     </div>
                 </div>
 
                 <div class="swiper-pagination"></div>
                 <div class="swiper-button-prev"></div>
                 <div class="swiper-button-next"></div>
-            </div>
-
-            <!-- Thumbnail strip -->
-            <div class="swiper gallery-thumbs">
-                <div class="swiper-wrapper">
-                    <div class="swiper-slide"><img src="https://images.unsplash.com/photo-1600093463592-8e36ae95ef56?q=80&w=400&auto=format&fit=crop" alt="Entrance thumb"></div>
-                    <div class="swiper-slide"><img src="https://images.unsplash.com/photo-1521017432531-fbd92d768814?q=80&w=400&auto=format&fit=crop" alt="Seating thumb"></div>
-                    <div class="swiper-slide"><img src="https://images.unsplash.com/photo-1559925393-8be0ec4767c8?q=80&w=400&auto=format&fit=crop" alt="Terrace thumb"></div>
-                    <div class="swiper-slide"><img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?q=80&w=400&auto=format&fit=crop" alt="Interior thumb"></div>
-                </div>
             </div>
         </div>
     </section>
