@@ -14,10 +14,10 @@ if (navbar) {
     window.addEventListener('scroll', () => {
         if (window.scrollY > 50) {
             navbar.style.padding = '1rem 5%';
-            navbar.style.background = 'rgba(13, 12, 12, 0.98)';
+            navbar.style.background = 'rgba(13, 26, 13, 0.98)';
         } else {
             navbar.style.padding = '1.5rem 5%';
-            navbar.style.background = 'rgba(13, 12, 12, 0.80)';
+            navbar.style.background = 'rgba(13, 26, 13, 0.80)';
         }
     }, { passive: true });
 }
@@ -101,7 +101,7 @@ if (preloader) {
     window.addEventListener('load', () => {
         setTimeout(() => {
             if (preloaderImg) {
-                preloaderImg.classList.add('disperse');
+                preloaderImg.classList.add('fade-out');
             }
             setTimeout(() => {
                 preloader.style.opacity = '0';
@@ -109,8 +109,8 @@ if (preloader) {
                 setTimeout(() => {
                     document.body.classList.add('loaded'); // triggers hero text fadeUp
                     preloader.style.display = 'none';
-                }, 800); // Wait for CSS transition
-            }, 800); // Wait for disperse animation
+                }, 900); // Wait for CSS transition
+            }, 900); // Wait for fade-out
         }, 1000); // 1 second display
     });
 }
