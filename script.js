@@ -36,41 +36,6 @@ if (mobileToggle && navLinks) {
     });
 }
 
-// ── Testimonial Swiper (index.html) ─────────────────────────────────────
-// FIX: loop: false + rewind: true prevents Swiper from cloning slides,
-// which would cause pagination dot count to mismatch the actual slide count.
-// With 10 slides you always get exactly 10 dots.
-if (document.querySelector('.testimonial-swiper') && typeof Swiper !== 'undefined') {
-    new Swiper('.testimonial-swiper', {
-        effect: 'coverflow',
-        grabCursor: true,
-        centeredSlides: true,
-        slidesPerView: 'auto',
-        loop: false,
-        rewind: true,
-        coverflowEffect: {
-            rotate: 20,
-            stretch: 0,
-            depth: 120,
-            modifier: 1,
-            slideShadows: true,
-        },
-        autoplay: {
-            delay: 4500,
-            disableOnInteraction: false,
-            pauseOnMouseEnter: true,
-        },
-        pagination: {
-            el: '.testimonial-swiper .swiper-pagination',
-            clickable: true,
-            dynamicBullets: true,   // shows compact sliding dots — readable at 10 slides
-        },
-        navigation: {
-            nextEl: '.testimonial-swiper .swiper-button-next',
-            prevEl: '.testimonial-swiper .swiper-button-prev',
-        },
-    });
-}
 
 // ── Gallery Swiper (reservation.html) — cinematic creative effect ────────
 if (document.querySelector('.gallery-swiper') && typeof Swiper !== 'undefined') {

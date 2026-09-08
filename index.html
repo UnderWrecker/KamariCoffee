@@ -166,9 +166,9 @@
             <i data-lucide="coffee" style="width:24px;height:24px;color:var(--color-accent);margin-right:6px;"></i>L'Aura
         </a>
         <div class="nav-links">
-            <a href="index.html" class="active">Home</a>
-            <a href="menu.html">Menu</a>
-            <a href="reservation.html">Reach Us</a>
+            <a href="#hero" class="active">Home</a>
+            <a href="#instagram-showcase">Instagram</a>
+            <a href="#reach-wrap">Reach Us</a>
         </div>
         <button id="mobileToggle" aria-label="Toggle navigation">
             <i data-lucide="menu" style="width:24px;height:24px;"></i>
@@ -191,167 +191,148 @@
         </div>
     </section>
 
-    <!-- Founder Message -->
-    <section id="ceo-message">
-        <div class="grid-2">
-            <div class="text-content" data-aos="fade-right">
-                <span class="section-icon"><i data-lucide="message-square-quote"></i></span>
-                <span class="section-subtitle">From the Founder</span>
-                <h2 class="section-title">A Passion for Perfection</h2>
-                <p>"When I opened L'Aura, my vision was simple: to create a sanctuary where time slows down, and every sip tells a story. We don't just roast coffee; we curate an experience that honors the journey of the bean from the highlands to your cup."</p>
-                <p>Every pastry is crafted with imported French butter, and every shot of espresso is pulled with absolute precision. We invite you to step away from the noise of the world and indulge in true craftsmanship.</p>
-                <div class="signature">Eleanor Vance</div>
+    <!-- Instagram Showcase -->
+    <section id="instagram-showcase" data-aos="fade-up">
+        <span class="section-subtitle">Follow Our Journey</span>
+        <a href="https://www.instagram.com/chinsusea/" target="_blank" class="ig-handle">@L_Aura_Cafe</a>
+        <p style="color: #888; max-width: 500px; margin: 0 auto; line-height: 1.6;">Join us on Instagram for daily aesthetic pours, fresh pastry drops, and a behind-the-scenes look at our roasting process.</p>
+    </section>
+
+    <!-- Gallery — full-width cinematic slider -->
+    <section id="gallery-section">
+        <div class="gallery-section-header" data-aos="fade-up">
+            <span class="section-subtitle">A Glimpse of L'Aura</span>
+            <h2 class="section-title" style="font-size:2.4rem;margin-top:0.4rem;">Our Storefront</h2>
+        </div>
+
+        <div class="gallery-wrap" data-aos="fade-up" data-aos-delay="100">
+            <!-- Main cinematic slider -->
+            <div class="swiper gallery-swiper">
+                <!-- Slide counter overlay -->
+                <div class="gallery-counter">
+                    <span class="counter-current" id="galleryCurrentSlide">01</span>
+                    <span class="counter-sep">/</span>
+                    <span class="counter-total">04</span>
+                </div>
+
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <img src="https://images.unsplash.com/photo-1600093463592-8e36ae95ef56?q=80&w=1974&auto=format&fit=crop" alt="Main entrance">
+                        <div class="gallery-slide-overlay"></div>
+                        <div class="gallery-slide-caption">
+                            <span class="caption-label">Exterior</span>
+                            <span class="caption-title">Main Entrance</span>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="https://images.unsplash.com/photo-1521017432531-fbd92d768814?q=80&w=1974&auto=format&fit=crop" alt="Corner seating">
+                        <div class="gallery-slide-overlay"></div>
+                        <div class="gallery-slide-caption">
+                            <span class="caption-label">Interior</span>
+                            <span class="caption-title">Corner Seating</span>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="https://images.unsplash.com/photo-1559925393-8be0ec4767c8?q=80&w=1974&auto=format&fit=crop" alt="Outdoor terrace">
+                        <div class="gallery-slide-overlay"></div>
+                        <div class="gallery-slide-caption">
+                            <span class="caption-label">Al Fresco</span>
+                            <span class="caption-title">Outdoor Terrace</span>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?q=80&w=2047&auto=format&fit=crop" alt="Interior ambiance">
+                        <div class="gallery-slide-overlay"></div>
+                        <div class="gallery-slide-caption">
+                            <span class="caption-label">Ambiance</span>
+                            <span class="caption-title">Interior Warmth</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="swiper-pagination"></div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
             </div>
-            <div class="img-wrapper" data-aos="fade-left" data-aos-delay="150">
-                <img src="https://images.unsplash.com/photo-1511920170033-f8396924c348?q=80&w=1974&auto=format&fit=crop" alt="Coffee Pour">
+
+            <!-- Thumbnail strip -->
+            <div class="swiper gallery-thumbs">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide"><img src="https://images.unsplash.com/photo-1600093463592-8e36ae95ef56?q=80&w=400&auto=format&fit=crop" alt="Entrance thumb"></div>
+                    <div class="swiper-slide"><img src="https://images.unsplash.com/photo-1521017432531-fbd92d768814?q=80&w=400&auto=format&fit=crop" alt="Seating thumb"></div>
+                    <div class="swiper-slide"><img src="https://images.unsplash.com/photo-1559925393-8be0ec4767c8?q=80&w=400&auto=format&fit=crop" alt="Terrace thumb"></div>
+                    <div class="swiper-slide"><img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?q=80&w=400&auto=format&fit=crop" alt="Interior thumb"></div>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- History -->
-    <section id="history" style="background-color: var(--color-secondary);">
-        <div class="grid-2">
-            <div class="img-wrapper order-reverse" data-aos="fade-right">
-                <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?q=80&w=1974&auto=format&fit=crop" alt="Coffee Roaster">
+    <!-- Contact Info + Map -->
+    <div id="reach-wrap">
+        <div class="reach-grid">
+
+            <div class="contact-card" data-aos="fade-right">
+                <h3 class="contact-header">Visit Our Store</h3>
+
+                <div class="contact-detail">
+                    <span class="contact-icon"><i data-lucide="map-pin"></i></span>
+                    <div>
+                        <span class="contact-label">Address</span>
+                        <span class="contact-value">1284 Artisanal Ave, Suite 101<br>New York, NY 10012</span>
+                    </div>
+                </div>
+
+                <div class="ornament-divider">— ✦ —</div>
+
+                <div class="contact-detail">
+                    <span class="contact-icon"><i data-lucide="phone"></i></span>
+                    <div>
+                        <span class="contact-label">Phone</span>
+                        <span class="contact-value">+1 (212) 555-0198</span>
+                    </div>
+                </div>
+
+                <div class="contact-detail">
+                    <span class="contact-icon"><i data-lucide="mail"></i></span>
+                    <div>
+                        <span class="contact-label">Email</span>
+                        <span class="contact-value">hello@lauracafe.com</span>
+                    </div>
+                </div>
+
+                <div class="ornament-divider">— ✦ —</div>
+
+                <div class="contact-detail">
+                    <span class="contact-icon"><i data-lucide="clock"></i></span>
+                    <div>
+                        <span class="contact-label">Hours</span>
+                        <span class="contact-value">
+                            Mon – Fri &nbsp;·&nbsp; 7:00 AM – 6:00 PM<br>
+                            Sat – Sun &nbsp;·&nbsp; 8:00 AM – 5:00 PM
+                        </span>
+                    </div>
+                </div>
             </div>
-            <div class="text-content" data-aos="fade-left" data-aos-delay="150">
-                <span class="section-icon"><i data-lucide="landmark"></i></span>
-                <span class="section-subtitle">Our Story</span>
-                <h2 class="section-title">Rooted in Tradition</h2>
-                <p>Established in 2012 in a small brick alleyway, L'Aura began as a humble micro-roastery. Our obsession with sourcing only the top 1% of specialty grade Arabica beans quickly drew a devoted following.</p>
-                <p>Over the years, we've expanded our footprint, yet our core philosophy remains unchanged. We roast in small batches, build direct relationships with farmers, and continually push the boundaries of modern coffee culture.</p>
-                <a href="menu.html" class="btn mt-2">See What We Serve</a>
+
+            <div class="map-side" data-aos="fade-left" data-aos-delay="150">
+                <h3 class="map-header">Find Us Here</h3>
+                <p class="map-desc">We're nestled in the heart of SoHo, New York — just a short walk from Spring Street Station. Look for the warm amber glow through our vintage window display.</p>
+                <div class="map-container">
+                    <iframe src="https://maps.google.com/maps?q=SoHo,%20New%20York&t=&z=14&ie=UTF8&iwloc=&output=embed"
+                        allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+                <a href="https://maps.google.com/maps?q=SoHo,%20New%20York" target="_blank" class="btn"
+                    style="display:inline-flex;align-items:center;gap:0.5rem;margin-top:1rem;">
+                    <i data-lucide="navigation" style="width:15px;height:15px;"></i>
+                    Get Directions
+                </a>
             </div>
+
         </div>
-    </section>
-
-    <!-- Testimonials — Swiper Coverflow -->
-    <section id="testimonials">
-        <div class="section-header" data-aos="fade-up">
-            <span class="section-subtitle">The Experience</span>
-            <h2 class="section-title">Words from Our Guests</h2>
-        </div>
-
-        <div class="swiper testimonial-swiper" data-aos="fade-up" data-aos-delay="100">
-            <div class="swiper-wrapper">
-
-                <div class="swiper-slide">
-                    <div class="testimonial-card">
-                        <span class="rating-badge">5.0 ★</span>
-                        <div class="stars">★★★★★</div>
-                        <p class="quote">&ldquo;Best pour-over I&rsquo;ve had in the city. The Geisha varietal was something else entirely.&rdquo;</p>
-                        <span class="customer-name">James Arlington</span>
-                        <span class="customer-tag">Verified Guest</span>
-                    </div>
-                </div>
-
-                <div class="swiper-slide">
-                    <div class="testimonial-card">
-                        <span class="rating-badge">5.0 ★</span>
-                        <div class="stars">★★★★★</div>
-                        <p class="quote">&ldquo;My Sunday ritual. Almond financier, cortado, quiet corner. Pure heaven.&rdquo;</p>
-                        <span class="customer-name">Sophie Laurent</span>
-                        <span class="customer-tag">Verified Guest</span>
-                    </div>
-                </div>
-
-                <div class="swiper-slide">
-                    <div class="testimonial-card">
-                        <span class="rating-badge">5.0 ★</span>
-                        <div class="stars">★★★★★</div>
-                        <p class="quote">&ldquo;Meticulously crafted. You can taste the dedication in every single cup.&rdquo;</p>
-                        <span class="customer-name">Marcus Reed</span>
-                        <span class="customer-tag">Verified Guest</span>
-                    </div>
-                </div>
-
-                <!-- Japanese -->
-                <div class="swiper-slide">
-                    <div class="testimonial-card">
-                        <span class="rating-badge">5.0 ★</span>
-                        <div class="stars">★★★★★</div>
-                        <p class="quote">&ldquo;コーヒーの香りが素晴らしく、静かな空間でゆっくりできました。また来ます。&rdquo;</p>
-                        <span class="customer-name">田中 由紀</span>
-                        <span class="customer-tag">Verified Guest &middot; Tokyo</span>
-                    </div>
-                </div>
-
-                <div class="swiper-slide">
-                    <div class="testimonial-card">
-                        <span class="rating-badge">4.5 ★</span>
-                        <div class="stars">★★★★<span class="star-half">★</span></div>
-                        <p class="quote">&ldquo;The cortado is like liquid silk. Wish there was a bit more seating, but I&rsquo;ll be back regardless.&rdquo;</p>
-                        <span class="customer-name">Amelia Chen</span>
-                        <span class="customer-tag">Verified Guest</span>
-                    </div>
-                </div>
-
-                <!-- Swedish -->
-                <div class="swiper-slide">
-                    <div class="testimonial-card">
-                        <span class="rating-badge">4.0 ★</span>
-                        <div class="stars">★★★★<span class="star-empty">★</span></div>
-                        <p class="quote">&ldquo;Fantastiskt kaffe och en lugn atmosf&auml;r. Verkligen v&auml;rt ett bes&ouml;k n&auml;r man &auml;r i New York.&rdquo;</p>
-                        <span class="customer-name">Erik Lindstr&ouml;m</span>
-                        <span class="customer-tag">Verified Guest &middot; Stockholm</span>
-                    </div>
-                </div>
-
-                <!-- Russian -->
-                <div class="swiper-slide">
-                    <div class="testimonial-card">
-                        <span class="rating-badge">4.5 ★</span>
-                        <div class="stars">★★★★<span class="star-half">★</span></div>
-                        <p class="quote">&ldquo;Уютно, тихо, и кофе просто великолепный. Буду советовать всем друзьям.&rdquo;</p>
-                        <span class="customer-name">Анна Волкова</span>
-                        <span class="customer-tag">Verified Guest &middot; Moscow</span>
-                    </div>
-                </div>
-
-                <div class="swiper-slide">
-                    <div class="testimonial-card">
-                        <span class="rating-badge">4.0 ★</span>
-                        <div class="stars">★★★★<span class="star-empty">★</span></div>
-                        <p class="quote">&ldquo;The Kyoto Matcha Latte is the finest I&rsquo;ve had outside Japan. Will be back very soon.&rdquo;</p>
-                        <span class="customer-name">Priya Sharma</span>
-                        <span class="customer-tag">Verified Guest</span>
-                    </div>
-                </div>
-
-                <div class="swiper-slide">
-                    <div class="testimonial-card">
-                        <span class="rating-badge">3.5 ★</span>
-                        <div class="stars">★★★<span class="star-half">★</span><span class="star-empty">★</span></div>
-                        <p class="quote">&ldquo;The Colombia Geisha is extraordinary &mdash; floral, complex, memorable. Steep price but worth it for a special occasion.&rdquo;</p>
-                        <span class="customer-name">Luca Bianchi</span>
-                        <span class="customer-tag">Verified Guest</span>
-                    </div>
-                </div>
-
-                <div class="swiper-slide">
-                    <div class="testimonial-card">
-                        <span class="rating-badge">3.5 ★</span>
-                        <div class="stars">★★★<span class="star-half">★</span><span class="star-empty">★</span></div>
-                        <p class="quote">&ldquo;Undeniable quality. Parking is rough and portions feel small &mdash; but I keep coming back, so that says it all.&rdquo;</p>
-                        <span class="customer-name">David Kim</span>
-                        <span class="customer-tag">Verified Guest</span>
-                    </div>
-                </div>
-
-            </div>
-            <div class="swiper-pagination"></div>
-            <div class="swiper-button-prev"></div>
-            <div class="swiper-button-next"></div>
-        </div>
-    </section>
+    </div>
 
     <footer>
         <div class="footer-logo">L'Aura</div>
-        <div class="social-links">
-            <a href="https://www.instagram.com/chinsusea/" target="_blank">Instagram</a>
-            <a href="https://twitter.com/L_Aura_Cafe" target="_blank">Twitter</a>
-            <a href="https://www.facebook.com/suraseachin/?locale=th_TH" target="_blank">Facebook</a>
-        </div>
         <p class="copyright">&copy; 2026 L'Aura Café &amp; Roastery. All Rights Reserved.</p>
     </footer>
 
