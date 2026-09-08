@@ -114,6 +114,41 @@
             font-style: italic;
         }
 
+        /* ── Instagram Overlay Boxes ──────────────────────── */
+        .ig-overlay-bottom {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 65px;
+            background-color: #0d0c0c;
+            z-index: 100;
+        }
+
+        .ig-overlay-top {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 110px;
+            background-color: #0d0c0c;
+            z-index: 100;
+            display: flex;
+            align-items: flex-end;
+            justify-content: flex-start;
+            padding-bottom: 16px;
+        }
+
+        @media (max-width: 768px) {
+            .ig-overlay-top {
+                height: 220px;
+                padding-bottom: 18px;
+            }
+            .ig-overlay-bottom {
+                height: 80px;
+            }
+        }
+
         /* ── Grid Sections ──────────────────────────────────── */
         .grid-2 {
             display: grid;
@@ -309,13 +344,10 @@
             <div class="elfsight-app-0b40882e-d516-4212-8c4f-b893660632a6" data-elfsight-app-lazy></div>
 
             <!-- Ad Blocker Black Box (Bottom) -->
-            <div
-                style="position: absolute; bottom: 0; left: 0; width: 100%; height: 65px; background-color: #0d0c0c; z-index: 100;">
-            </div>
+            <div class="ig-overlay-bottom"></div>
 
             <!-- Header Blocker Black Box (Top) & Custom Handle -->
-            <div
-                style="position: absolute; top: 0; left: 0; width: 100%; height: 110px; background-color: #0d0c0c; z-index: 100; display: flex; align-items: flex-end; justify-content: flex-start; padding-bottom: 20px;">
+            <div class="ig-overlay-top">
                 <a href="https://www.instagram.com/kamaricoffeee/" target="_blank" class="ig-handle"
                     style="font-size: 2.2rem; margin: 0; line-height: 1;">@kamaricoffeee</a>
             </div>
