@@ -121,17 +121,17 @@ if (document.querySelector('.gallery-swiper') && typeof Swiper !== 'undefined') 
 // Flatpickr removed — Plan Your Visit widget was removed from reservation.html
 
 // ── Nutrition Modal (menu.html) ──────────────────────────────────────────
-const modal    = document.getElementById('nutrition-modal');
+const modal = document.getElementById('nutrition-modal');
 const closeBtn = document.querySelector('.close-modal');
 const menuItems = document.querySelectorAll('.menu-item.clickable');
 
 if (modal && closeBtn && menuItems.length) {
     menuItems.forEach(item => {
         item.addEventListener('click', function () {
-            document.getElementById('modal-title').innerText     = this.querySelector('.menu-item-title').innerText;
-            document.getElementById('modal-image').src           = this.getAttribute('data-image') || '';
-            document.getElementById('modal-calories').innerText  = this.getAttribute('data-calories')  || '—';
-            document.getElementById('modal-macros').innerText    = this.getAttribute('data-macros')    || '—';
+            document.getElementById('modal-title').innerText = this.querySelector('.menu-item-title').innerText;
+            document.getElementById('modal-image').src = this.getAttribute('data-image') || '';
+            document.getElementById('modal-calories').innerText = this.getAttribute('data-calories') || '—';
+            document.getElementById('modal-macros').innerText = this.getAttribute('data-macros') || '—';
             document.getElementById('modal-allergens').innerText = this.getAttribute('data-allergens') || 'None';
             modal.style.display = 'flex';
             setTimeout(() => modal.classList.add('show'), 10);
@@ -149,7 +149,7 @@ if (modal && closeBtn && menuItems.length) {
 if (typeof Lenis !== 'undefined') {
     const lenis = new Lenis({
         duration: 1.2,
-        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), 
+        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
         smooth: true,
     });
 
@@ -160,19 +160,28 @@ if (typeof Lenis !== 'undefined') {
     requestAnimationFrame(raf);
 }
 
-// ── Typed.js Hero Animation (index.html) ──────────────────────────────────
-const typedElement = document.getElementById('typed-hero');
-if (typedElement && typeof Typed !== 'undefined') {
-    new Typed('#typed-hero', {
-        strings: ['Senses', 'Morning', 'Taste', 'Routine'],
-        typeSpeed: 60,
-        backSpeed: 40,
-        backDelay: 2000,
-        loop: true,
-        showCursor: true,
-        cursorChar: '|',
-        autoInsertCss: true
+// ── GSAP Hero Sticky Scroll Sequence (index.html) ────────────────────────
+if (document.getElementById('hero') && typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+    gsap.registerPlugin(ScrollTrigger);
+
+    const tl = gsap.timeline({
+        scrollTrigger: {
+            trigger: '#hero',
+            start: 'top top',
+            end: '+=200%', // Pin for 2 viewport heights
+            pin: true,
+            scrub: 1, // Smooth scrubbing
+        }
     });
+
+    // Sequence:
+    // 1. Logo fades out and scales up
+    tl.to('.hero-logo-intro', { opacity: 0, scale: 1.5, duration: 1 })
+      // 2. Background image and overlay fade in, image scales down to normal
+      .to('.hero-bg', { opacity: 1, scale: 1, duration: 2 }, "-=0.5")
+      .to('.hero-overlay', { opacity: 1, duration: 2 }, "<")
+      // 3. Main text and button fade in and slide up
+      .to('.hero-content', { opacity: 1, y: 0, duration: 1.5 }, "-=0.5");
 }
 
 // ── Rough Notation (menu.html) ────────────────────────────────────────────
@@ -185,7 +194,7 @@ if (rnElement && typeof window.RoughNotation !== 'undefined') {
         strokeWidth: 2,
         animationDuration: 1200
     });
-    
+
     // Use Intersection Observer to animate only when scrolled into view
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -195,6 +204,6 @@ if (rnElement && typeof window.RoughNotation !== 'undefined') {
             }
         });
     }, { threshold: 0.5 });
-    
+
     observer.observe(rnElement);
 }
