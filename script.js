@@ -51,6 +51,20 @@ if (document.querySelector('.gallery-swiper') && typeof Swiper !== 'undefined') 
     });
 }
 
+// ── Instagram Swiper (index.html) ────────────────────────────────────────
+if (document.querySelector('.ig-swiper') && typeof Swiper !== 'undefined') {
+    new Swiper('.ig-swiper', {
+        slidesPerView: 2,
+        spaceBetween: 0,
+        loop: true,
+        autoplay: { delay: 3000, disableOnInteraction: false },
+        breakpoints: {
+            640: { slidesPerView: 3 },
+            768: { slidesPerView: 4 },
+            1024: { slidesPerView: 5 },
+        }
+    });
+}
 // Flatpickr removed — Plan Your Visit widget was removed from reservation.html
 
 // ── Nutrition Modal (menu.html) ──────────────────────────────────────────

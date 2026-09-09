@@ -631,7 +631,7 @@ span.flatpickr-weekday {
 #instagram-showcase {
     background: #0d0c0c;
     text-align: center;
-    padding: 8rem 5%;
+    padding: 8rem 0;
     border-bottom: 1px solid rgba(255, 255, 255, 0.05);
     overflow: hidden;
     max-width: 100vw;
@@ -641,6 +641,22 @@ span.flatpickr-weekday {
 #instagram-showcase>div {
     width: 100%;
     position: relative;
+}
+
+.ig-swiper .swiper-slide {
+    aspect-ratio: 1 / 1;
+}
+
+.ig-swiper .swiper-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+}
+
+.ig-swiper .swiper-slide:hover img {
+    transform: scale(1.05);
 }
 
 .ig-handle {
