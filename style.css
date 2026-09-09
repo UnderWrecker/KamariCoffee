@@ -633,13 +633,11 @@ span.flatpickr-weekday {
     text-align: center;
     padding: 8rem 5%;
     border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-    overflow: hidden;
     max-width: 100vw;
     box-sizing: border-box;
 }
 
 #instagram-showcase>div {
-    overflow: hidden;
     width: 100%;
     position: relative;
 }
