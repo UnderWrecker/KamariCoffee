@@ -855,4 +855,10 @@ span.flatpickr-weekday {
     .gallery-swiper {
         height: 320px;
     }
+    .contact-card {
+        padding: 2rem 1.5rem;
+    }
+    .contact-value {
+        word-break: break-word;
+    }
 }
