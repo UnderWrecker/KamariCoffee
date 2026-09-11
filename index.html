@@ -28,15 +28,25 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: transparent;
             z-index: 9999;
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: opacity 0.9s ease, visibility 0.9s ease;
+        }
+
+        .preloader-bg {
+            position: absolute;
+            inset: 0;
+            background: #000;
+            transition: opacity 0.45s ease;
+        }
+
+        .preloader-bg.fade-out {
+            opacity: 0;
         }
 
         .preloader-logo-img {
+            position: relative;
             width: 150px;
             height: auto;
             transition: opacity 0.3s ease;
@@ -284,6 +294,7 @@
 
     <!-- Preloader -->
     <div id="preloader">
+        <div class="preloader-bg"></div>
         <img src="Sunny.png" class="preloader-logo-img" alt="Sun">
     </div>
 

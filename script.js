@@ -109,23 +109,27 @@ if (typeof Lenis !== 'undefined') {
 
 // ── Preloader (index.html) ────────────────────────────────────────────────
 const preloader = document.getElementById('preloader');
+const preloaderBg = document.querySelector('.preloader-bg');
 const preloaderImg = document.querySelector('.preloader-logo-img');
 
 if (preloader) {
     window.addEventListener('load', () => {
         setTimeout(() => {
-            if (preloaderImg) {
-                preloaderImg.classList.add('fade-out');
+            if (preloaderBg) {
+                preloaderBg.classList.add('fade-out'); // black background fades first
             }
             setTimeout(() => {
-                preloader.style.opacity = '0';
-                preloader.style.visibility = 'hidden';
                 setTimeout(() => {
-                    document.body.classList.add('loaded'); // triggers hero text fadeUp
-                    preloader.style.display = 'none';
-                }, 200); // overlay fade out
-            }, 300); // wait for logo fade (0.3s)
-        }, 500); // show logo for 0.5s
+                    if (preloaderImg) {
+                        preloaderImg.classList.add('fade-out'); // sun fades on its own
+                    }
+                    setTimeout(() => {
+                        document.body.classList.add('loaded'); // triggers hero text fadeUp
+                        preloader.style.display = 'none';
+                    }, 300); // wait for logo fade (0.3s)
+                }, 400); // let the sun linger alone with no background
+            }, 450); // wait for background fade (0.45s)
+        }, 600); // show background + sun together for 0.6s
     });
 }
 
