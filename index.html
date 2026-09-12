@@ -72,7 +72,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-image: url('Cafe2.jpg');
+            background-image: url('images/Cafe2.jpg');
             background-size: cover;
             background-position: center;
             z-index: -2;
@@ -282,20 +282,23 @@
 
     <nav id="navbar">
         <a href="index.html" class="logo flex items-center gap-2">
-            <img src="Sunny.png" alt="Kamari Coffee" style="height: 32px;">
-            <span
-                style="color: var(--color-accent); font-family: var(--font-heading); font-size: 1.5rem; letter-spacing: 1px;">Kamari
-                Coffee</span>
+            <img src="images/Sunny.png" alt="Kamari Coffee" style="height: 32px;">
         </a>
-        <button id="mobileToggle" aria-label="Toggle navigation" style="display: none;">
-            <i data-lucide="menu" style="width:24px;height:24px;"></i>
-        </button>
+        <div class="nav-right">
+            <div id="lang-switch" role="group" aria-label="Language">
+                <button type="button" data-lang="en">EN</button>
+                <button type="button" data-lang="sv">SV</button>
+            </div>
+            <button id="mobileToggle" aria-label="Toggle navigation" style="display: none;">
+                <i data-lucide="menu" style="width:24px;height:24px;"></i>
+            </button>
+        </div>
     </nav>
 
     <!-- Preloader -->
     <div id="preloader">
         <div class="preloader-bg"></div>
-        <img src="Sunny.png" class="preloader-logo-img" alt="Sun">
+        <img src="images/Sunny.png" class="preloader-logo-img" alt="Sun">
     </div>
 
     <!-- Hero -->
@@ -303,13 +306,9 @@
         <div class="hero-bg"></div>
         <div class="hero-overlay"></div>
         <div class="hero-content" style="max-width: 900px; margin: 0 auto;">
-            <span class="hero-subtitle">Est. 2023</span>
-            <h1 class="hero-title" style="margin-bottom: 1rem;">Our Story</h1>
-            <p
-                style="color: #ddd; font-size: 1.15rem; line-height: 1.8; margin-bottom: 2.5rem; font-family: var(--font-body);">
-                Born from a passion for ethically sourced beans and the perfect roast, Kamari Coffee began as a humble
-                neighborhood cart. Today, we invite you to experience the culmination of our journey — a sanctuary where
-                every cup tells a story of craftsmanship, warmth, and community.</p>
+            <p style="color: #ddd; font-size: 1.15rem; line-height: 1.8; font-family: var(--font-body);"
+                data-i18n="hero-tagline">
+                A genuine coffee shop with an atmosphere created by our beloved customers.</p>
         </div>
     </section>
 
@@ -322,27 +321,13 @@
 
         <div class="swiper ig-swiper">
             <div class="swiper-wrapper">
-                <!-- Placeholder Instagram Images -->
-                <div class="swiper-slide"><img
-                        src="https://images.unsplash.com/photo-1497935586351-b67a49e012bf?q=80&w=600&auto=format&fit=crop"
-                        alt="Instagram Post 1"></div>
-                <div class="swiper-slide"><img src="Cafe.jpg" alt="Instagram Post 2"></div>
-                <div class="swiper-slide"><img
-                        src="https://images.unsplash.com/photo-1511920170033-f8396924c348?q=80&w=600&auto=format&fit=crop"
-                        alt="Instagram Post 3"></div>
-                <div class="swiper-slide"><img
-                        src="https://images.unsplash.com/photo-1447933601403-0c6688de566e?q=80&w=600&auto=format&fit=crop"
-                        alt="Instagram Post 4"></div>
-                <div class="swiper-slide"><img src="Cafe3.jpg" alt="Instagram Post 5"></div>
-                <div class="swiper-slide"><img
-                        src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?q=80&w=600&auto=format&fit=crop"
-                        alt="Instagram Post 6"></div>
-                <div class="swiper-slide"><img
-                        src="https://images.unsplash.com/photo-1498804103079-a6351b050096?q=80&w=600&auto=format&fit=crop"
-                        alt="Instagram Post 7"></div>
-                <div class="swiper-slide"><img
-                        src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?q=80&w=600&auto=format&fit=crop"
-                        alt="Instagram Post 8"></div>
+                <div class="swiper-slide"><img src="images/Cafe.jpg" alt="Kamari Coffee café"></div>
+                <div class="swiper-slide"><img src="images/KamariCoffee-20.jpg" alt="Kamari Coffee café"></div>
+                <div class="swiper-slide"><img src="images/KamariCoffee-22.jpg" alt="Kamari Coffee café"></div>
+                <div class="swiper-slide"><img src="images/Cafe3.jpg" alt="Kamari Coffee café"></div>
+                <div class="swiper-slide"><img src="images/KamariCoffee-41.jpg" alt="Kamari Coffee café"></div>
+                <div class="swiper-slide"><img src="images/KamariCoffee-42.jpg" alt="Kamari Coffee café"></div>
+                <div class="swiper-slide"><img src="images/KamariCoffee-80.jpg" alt="Kamari Coffee café"></div>
             </div>
         </div>
     </section>
@@ -354,13 +339,13 @@
         <div class="reach-grid">
 
             <div class="contact-card" data-aos="fade-right">
-                <h3 class="contact-header">Visit Our Store</h3>
+                <h3 class="contact-header" data-i18n="contact-header">Visit Our Store</h3>
 
                 <div class="contact-detail">
                     <span class="contact-icon"><i data-lucide="map-pin"></i></span>
                     <div>
-                        <span class="contact-label">Address</span>
-                        <span class="contact-value">Gibraltargatan 4<br>411 32 Gothenburg</span>
+                        <span class="contact-label" data-i18n="label-address">Address</span>
+                        <span class="contact-value" data-i18n="address-value">Gibraltargatan 4<br>411 32 Gothenburg</span>
                     </div>
                 </div>
 
@@ -369,7 +354,7 @@
                 <div class="contact-detail">
                     <span class="contact-icon"><i data-lucide="mail"></i></span>
                     <div>
-                        <span class="contact-label">Email</span>
+                        <span class="contact-label" data-i18n="label-email">Email</span>
                         <span class="contact-value">kamariandcoffee@gmail.com</span>
                     </div>
                 </div>
@@ -379,8 +364,8 @@
                 <div class="contact-detail">
                     <span class="contact-icon"><i data-lucide="clock"></i></span>
                     <div>
-                        <span class="contact-label">Hours</span>
-                        <span class="contact-value">
+                        <span class="contact-label" data-i18n="label-hours">Hours</span>
+                        <span class="contact-value" data-i18n="hours-value">
                             Mon – Fri &nbsp;·&nbsp; 8:00 AM – 6:00 PM<br>
                             Sat – Sun &nbsp;·&nbsp; 9:00 AM – 5:00 PM
                         </span>
@@ -389,8 +374,8 @@
             </div>
 
             <div class="map-side" data-aos="fade-left" data-aos-delay="150">
-                <h3 class="map-header">Find Us Here</h3>
-                <p class="map-desc">We're located in the heart of Gothenburg, just a short walk from the vibrant
+                <h3 class="map-header" data-i18n="map-header">Find Us Here</h3>
+                <p class="map-desc" data-i18n="map-desc">We're located in the heart of Gothenburg, just a short walk from the vibrant
                     Lorensberg district. Walk along the Chalmers Campus Utegym and look for our golden sun logo.
                 </p>
                 <div class="map-container">
@@ -401,15 +386,35 @@
                 <a href="https://maps.app.goo.gl/pSj9U6cKiwyiKD8A8" target="_blank" class="btn"
                     style="display:inline-flex;align-items:center;gap:0.5rem;margin-top:1rem;">
                     <i data-lucide="navigation" style="width:15px;height:15px;"></i>
-                    Get Directions
+                    <span data-i18n="get-directions">Get Directions</span>
                 </a>
             </div>
 
         </div>
     </div>
 
+    <!-- Contact Form -->
+    <section id="contact-form-section">
+        <div class="form-card" data-aos="fade-up">
+            <h3 class="contact-header" data-i18n="form-title">Send Us a Message</h3>
+            <form id="contact-form">
+                <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+                <input type="hidden" name="_subject" value="New message from Kamari Coffee website">
+                <input type="hidden" name="_template" value="table">
+
+                <input type="email" name="email" required placeholder="Email" aria-label="Email"
+                    data-i18n-placeholder="form-label-email" data-i18n-aria-label="form-label-email">
+                <textarea name="message" rows="5" required placeholder="Message" aria-label="Message"
+                    data-i18n-placeholder="form-label-message" data-i18n-aria-label="form-label-message"></textarea>
+
+                <button type="submit" class="btn" data-i18n="form-submit">Send Message</button>
+                <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+            </form>
+        </div>
+    </section>
+
     <footer>
-        <p class="copyright">&copy; 2026 Kamari Coffee. All Rights Reserved.</p>
+        <p class="copyright" data-i18n="copyright">&copy; 2026 Kamari Coffee. All Rights Reserved.</p>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>

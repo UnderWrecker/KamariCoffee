@@ -1,3 +1,130 @@
+// ── i18n (English / Swedish) ─────────────────────────────────────────────
+const translations = {
+    en: {
+        title: 'Kamari Coffee | Premium Café & Roastery',
+        description: 'Experience the finest artisanal coffee and delicate pastries at Kamari Coffee.',
+        'hero-tagline': 'A genuine coffee shop with an atmosphere created by our beloved customers.',
+        'contact-header': 'Visit Our Store',
+        'label-address': 'Address',
+        'address-value': 'Gibraltargatan 4<br>411 32 Gothenburg',
+        'label-email': 'Email',
+        'label-hours': 'Hours',
+        'hours-value': 'Mon – Fri &nbsp;·&nbsp; 8:00 AM – 6:00 PM<br>Sat – Sun &nbsp;·&nbsp; 9:00 AM – 5:00 PM',
+        'map-header': 'Find Us Here',
+        'map-desc': "We're located in the heart of Gothenburg, just a short walk from the vibrant Lorensberg district. Walk along the Chalmers Campus Utegym and look for our golden sun logo.",
+        'get-directions': 'Get Directions',
+        copyright: '&copy; 2026 Kamari Coffee. All Rights Reserved.',
+        'form-title': 'Send Us a Message',
+        'form-label-email': 'Email',
+        'form-label-message': 'Message',
+        'form-submit': 'Send Message',
+        'form-success': "Thanks! Your message has been sent.",
+        'form-error': 'Something went wrong. Please try again or email us directly.',
+    },
+    sv: {
+        title: 'Kamari Coffee | Premiumkaffe & Rosteri',
+        description: 'Upplev det finaste hantverkskaffet och delikata bakverk på Kamari Coffee.',
+        'hero-tagline': 'Ett genuint kafé med en atmosfär skapad av våra kära kunder.',
+        'contact-header': 'Besök Oss',
+        'label-address': 'Adress',
+        'address-value': 'Gibraltargatan 4<br>411 32 Göteborg',
+        'label-email': 'E-post',
+        'label-hours': 'Öppettider',
+        'hours-value': 'Mån – Fre &nbsp;·&nbsp; 08:00 – 18:00<br>Lör – Sön &nbsp;·&nbsp; 09:00 – 17:00',
+        'map-header': 'Hitta Hit',
+        'map-desc': 'Vi ligger mitt i hjärtat av Göteborg, bara ett kort promenadavstånd från livliga Lorensberg. Följ Chalmers Campus Utegym så hittar du vår gyllene sol-logga.',
+        'get-directions': 'Vägbeskrivning',
+        copyright: '&copy; 2026 Kamari Coffee. Alla rättigheter förbehållna.',
+        'form-title': 'Skicka Ett Meddelande',
+        'form-label-email': 'E-post',
+        'form-label-message': 'Meddelande',
+        'form-submit': 'Skicka Meddelande',
+        'form-success': 'Tack! Ditt meddelande har skickats.',
+        'form-error': 'Något gick fel. Försök igen eller maila oss direkt.',
+    },
+};
+
+let currentLang = 'en';
+
+function applyLanguage(lang) {
+    currentLang = lang;
+    document.documentElement.lang = lang;
+    document.title = translations[lang].title;
+    const metaDesc = document.querySelector('meta[name="description"]');
+    if (metaDesc) metaDesc.setAttribute('content', translations[lang].description);
+
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (translations[lang][key] !== undefined) {
+            el.innerHTML = translations[lang][key];
+        }
+    });
+
+    document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+        const key = el.getAttribute('data-i18n-placeholder');
+        if (translations[lang][key] !== undefined) {
+            el.placeholder = translations[lang][key];
+        }
+    });
+
+    document.querySelectorAll('[data-i18n-aria-label]').forEach(el => {
+        const key = el.getAttribute('data-i18n-aria-label');
+        if (translations[lang][key] !== undefined) {
+            el.setAttribute('aria-label', translations[lang][key]);
+        }
+    });
+
+    document.querySelectorAll('#lang-switch [data-lang]').forEach(btn => {
+        btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
+    });
+
+    try { localStorage.setItem('kamari-lang', lang); } catch (e) { }
+}
+
+let initialLang = 'en';
+try {
+    initialLang = localStorage.getItem('kamari-lang') || (navigator.language.startsWith('sv') ? 'sv' : 'en');
+} catch (e) {
+    initialLang = navigator.language.startsWith('sv') ? 'sv' : 'en';
+}
+applyLanguage(initialLang);
+
+document.querySelectorAll('#lang-switch [data-lang]').forEach(btn => {
+    btn.addEventListener('click', () => applyLanguage(btn.getAttribute('data-lang')));
+});
+
+// ── Contact Form (FormSubmit) ─────────────────────────────────────────────
+const contactForm = document.getElementById('contact-form');
+if (contactForm) {
+    const formStatus = document.getElementById('form-status');
+    const submitBtn = contactForm.querySelector('button[type="submit"]');
+
+    contactForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        submitBtn.disabled = true;
+        formStatus.textContent = '';
+        formStatus.classList.remove('success', 'error');
+
+        try {
+            const response = await fetch('https://formsubmit.co/ajax/kamariandcoffee@gmail.com', {
+                method: 'POST',
+                headers: { Accept: 'application/json' },
+                body: new FormData(contactForm),
+            });
+            if (!response.ok) throw new Error('Request failed');
+
+            formStatus.textContent = translations[currentLang]['form-success'];
+            formStatus.classList.add('success');
+            contactForm.reset();
+        } catch (err) {
+            formStatus.textContent = translations[currentLang]['form-error'];
+            formStatus.classList.add('error');
+        } finally {
+            submitBtn.disabled = false;
+        }
+    });
+}
+
 // ── Lucide Icons ────────────────────────────────────────────────────────
 document.addEventListener('DOMContentLoaded', () => {
     if (typeof lucide !== 'undefined') lucide.createIcons();
