@@ -97,15 +97,21 @@ nav {
     transition: var(--transition);
 }
 
-.logo {
+.logo-text {
     font-family: var(--font-heading);
     font-size: 2rem;
     color: var(--color-accent);
     letter-spacing: 2px;
     text-transform: uppercase;
+}
+
+.logo-mark {
     position: absolute;
     left: 50%;
-    transform: translateX(-50%);
+    top: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    align-items: center;
 }
 
 .nav-right {

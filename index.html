@@ -11,6 +11,8 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Inter:wght@300;400;500&display=swap"
         rel="stylesheet">
+    <!-- General Sans (free, hero tagline font) -->
+    <link href="https://api.fontshare.com/v2/css?f[]=general-sans@600,700&display=swap" rel="stylesheet">
     <!-- Tailwind CSS (preflight disabled — preserves our dark theme variables) -->
     <script>tailwind.config = { corePlugins: { preflight: false }, theme: { extend: { colors: { gold: '#d4af37', 'cafe-dark': '#0d0c0c' } } } }</script>
     <script src="https://cdn.tailwindcss.com"></script>
@@ -281,7 +283,12 @@
 <body>
 
     <nav id="navbar">
-        <a href="index.html" class="logo flex items-center gap-2">
+        <a href="index.html" class="logo-text">
+            <span
+                style="color: var(--color-accent); font-family: var(--font-heading); font-size: 1.1rem; letter-spacing: 1px;">Kamari
+                Coffee</span>
+        </a>
+        <a href="index.html" class="logo-mark">
             <img src="images/Sunny.png" alt="Kamari Coffee" style="height: 32px;">
         </a>
         <div class="nav-right">
@@ -306,7 +313,7 @@
         <div class="hero-bg"></div>
         <div class="hero-overlay"></div>
         <div class="hero-content" style="max-width: 900px; margin: 0 auto;">
-            <p style="color: #ddd; font-size: 1.15rem; line-height: 1.8; font-family: var(--font-body);"
+            <p style="color: #ddd; font-size: 1.15rem; line-height: 1.8; font-family: 'General Sans', var(--font-body); font-weight: 700;"
                 data-i18n="hero-tagline">
                 A genuine coffee shop with an atmosphere created by our beloved customers.</p>
         </div>
