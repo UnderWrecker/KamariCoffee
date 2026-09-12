@@ -3,7 +3,7 @@ const translations = {
     en: {
         title: 'Kamari Coffee | Premium Café & Roastery',
         description: 'Experience the finest artisanal coffee and delicate pastries at Kamari Coffee.',
-        'hero-tagline': 'A genuine coffee shop with an atmosphere created by our beloved customers.',
+        'hero-tagline': 'A genuine coffee shop with an atmosphere,<br>created by our beloved customers.',
         'contact-header': 'Visit Our Store',
         'label-address': 'Address',
         'address-value': 'Gibraltargatan 4<br>411 32 Gothenburg',
@@ -24,7 +24,7 @@ const translations = {
     sv: {
         title: 'Kamari Coffee | Premiumkaffe & Rosteri',
         description: 'Upplev det finaste hantverkskaffet och delikata bakverk på Kamari Coffee.',
-        'hero-tagline': 'Ett genuint kafé med en atmosfär skapad av våra kära kunder.',
+        'hero-tagline': 'Ett genuint kafé med en atmosfär,<br>skapad av våra kära kunder.',
         'contact-header': 'Besök Oss',
         'label-address': 'Adress',
         'address-value': 'Gibraltargatan 4<br>411 32 Göteborg',
