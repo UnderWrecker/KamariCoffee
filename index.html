@@ -80,19 +80,6 @@
             z-index: -2;
         }
 
-        .hero-video {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            min-width: 100%;
-            min-height: 100%;
-            width: auto;
-            height: auto;
-            transform: translate(-50%, -50%);
-            object-fit: cover;
-            z-index: -2;
-        }
-
         .hero-overlay {
             position: absolute;
             top: 0;
@@ -179,6 +166,22 @@
 
         .img-wrapper:hover img {
             transform: scale(1.05);
+        }
+
+        /* ── Video Showcase ─────────────────────────────────── */
+        .video-wrapper {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+            border-radius: 4px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        .video-wrapper video {
+            width: 100%;
+            height: auto;
+            display: block;
         }
 
         .text-content p {
@@ -324,9 +327,6 @@
     <!-- Hero -->
     <section id="hero">
         <div class="hero-bg"></div>
-        <video class="hero-video" autoplay muted loop playsinline preload="auto">
-            <source src="videos/kamari-loop.mp4" type="video/mp4">
-        </video>
         <div class="hero-overlay"></div>
         <div class="hero-content" style="max-width: 900px; margin: 0 auto;">
             <p style="color: #ddd; font-size: 1.45rem; line-height: 1.8; font-family: 'General Sans', var(--font-body); font-weight: 700;"
@@ -335,23 +335,20 @@
         </div>
     </section>
 
-    <!-- Instagram Showcase -->
+    <!-- Video Showcase -->
+    <section id="video-showcase" style="padding: 4rem 2rem 0;">
+        <div class="video-wrapper" data-aos="fade-up">
+            <video autoplay muted loop playsinline preload="auto">
+                <source src="videos/kamari-loop.mp4" type="video/mp4">
+            </video>
+        </div>
+    </section>
+
+    <!-- Instagram Handle -->
     <section id="instagram-showcase" style="padding-top: 4rem;">
-        <div style="text-align: center; padding-bottom: 2rem;">
+        <div style="text-align: center;">
             <a href="https://www.instagram.com/kamaricoffeee/" target="_blank" class="ig-handle"
                 style="font-size: 3.2rem; margin: 0; line-height: 1;">@Kamaricoffeee</a>
-        </div>
-
-        <div class="swiper ig-swiper">
-            <div class="swiper-wrapper">
-                <div class="swiper-slide"><img src="images/Cafe.jpg" alt="Kamari Coffee café"></div>
-                <div class="swiper-slide"><img src="images/KamariCoffee-20.jpg" alt="Kamari Coffee café"></div>
-                <div class="swiper-slide"><img src="images/KamariCoffee-22.jpg" alt="Kamari Coffee café"></div>
-                <div class="swiper-slide"><img src="images/Cafe3.jpg" alt="Kamari Coffee café"></div>
-                <div class="swiper-slide"><img src="images/KamariCoffee-41.jpg" alt="Kamari Coffee café"></div>
-                <div class="swiper-slide"><img src="images/KamariCoffee-42.jpg" alt="Kamari Coffee café"></div>
-                <div class="swiper-slide"><img src="images/KamariCoffee-80.jpg" alt="Kamari Coffee café"></div>
-            </div>
         </div>
     </section>
 
