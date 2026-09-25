@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kamari Coffee | Premium Café &amp; Roastery</title>
+    <title>Kamari Coffee</title>
     <meta name="description" content="Experience the finest artisanal coffee and delicate pastries at Kamari Coffee.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -169,18 +169,25 @@
         }
 
         /* ── Video Showcase ─────────────────────────────────── */
-        .video-wrapper {
+        #video-showcase {
+            height: 100vh;
+            padding: 0;
             position: relative;
-            max-width: 1200px;
-            margin: 0 auto;
-            border-radius: 4px;
             overflow: hidden;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        .video-wrapper {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
         }
 
         .video-wrapper video {
             width: 100%;
-            height: auto;
+            height: 100%;
+            object-fit: cover;
             display: block;
         }
 
@@ -336,8 +343,8 @@
     </section>
 
     <!-- Video Showcase -->
-    <section id="video-showcase" style="padding: 4rem 2rem 0;">
-        <div class="video-wrapper" data-aos="fade-up">
+    <section id="video-showcase">
+        <div class="video-wrapper">
             <video autoplay muted loop playsinline preload="auto">
                 <source src="videos/kamari-loop.mp4" type="video/mp4">
             </video>
@@ -348,7 +355,14 @@
     <section id="instagram-showcase" style="padding-top: 4rem;">
         <div style="text-align: center;">
             <a href="https://www.instagram.com/kamaricoffeee/" target="_blank" class="ig-handle"
-                style="font-size: 3.2rem; margin: 0; line-height: 1;">@Kamaricoffeee</a>
+                aria-label="Kamari Coffee on Instagram" style="margin: 0;">
+                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                    <line x1="17.5" y1="6.5" x2="17.5" y2="6.5"></line>
+                </svg>
+            </a>
         </div>
     </section>
 
@@ -369,7 +383,7 @@
                     </div>
                 </div>
 
-                <div class="ornament-divider">— ✦ —</div>
+                <div class="ornament-divider" aria-hidden="true"></div>
 
                 <div class="contact-detail">
                     <span class="contact-icon"><i data-lucide="mail"></i></span>
@@ -379,7 +393,7 @@
                     </div>
                 </div>
 
-                <div class="ornament-divider">— ✦ —</div>
+                <div class="ornament-divider" aria-hidden="true"></div>
 
                 <div class="contact-detail">
                     <span class="contact-icon"><i data-lucide="clock"></i></span>

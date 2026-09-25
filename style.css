@@ -90,10 +90,7 @@ nav {
     justify-content: space-between;
     align-items: center;
     z-index: 1000;
-    background: rgba(13, 26, 13, 0.8);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    background: transparent;
     transition: var(--transition);
 }
 
@@ -796,12 +793,11 @@ span.flatpickr-weekday {
 }
 
 .ig-handle {
-    font-family: var(--font-heading);
-    font-size: 4rem;
     color: var(--color-accent);
-    display: block;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     margin: 1.5rem 0 2rem;
-    font-style: italic;
     transition: var(--transition);
 }
 
@@ -889,8 +885,7 @@ span.flatpickr-weekday {
 
 /* ── Contact & Map ──────────────────────────────────── */
 #reach-wrap {
-    background: linear-gradient(rgba(13, 12, 12, 0.97), rgba(13, 12, 12, 0.97)),
-        url('https://images.unsplash.com/photo-1497935586351-b67a49e012bf?q=80&w=2071&auto=format&fit=crop') center/cover fixed;
+    background: #0d0c0c;
     padding: 5rem 5% 8rem;
 }
 
@@ -955,12 +950,14 @@ span.flatpickr-weekday {
 }
 
 .ornament-divider {
-    text-align: center;
-    color: var(--color-accent);
-    opacity: 0.35;
-    font-size: 1.2rem;
-    letter-spacing: 8px;
-    margin: 1.5rem 0;
+    width: 140px;
+    height: 28px;
+    margin: 1.5rem auto;
+    background-image: url('images/patterns/circles-ring-28.png');
+    background-size: 28px 28px;
+    background-repeat: repeat-x;
+    background-position: center;
+    opacity: 1;
 }
 
 .map-side {

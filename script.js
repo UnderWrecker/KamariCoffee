@@ -1,7 +1,7 @@
 // ── i18n (English / Swedish) ─────────────────────────────────────────────
 const translations = {
     en: {
-        title: 'Kamari Coffee | Premium Café & Roastery',
+        title: 'Kamari Coffee',
         description: 'Experience the finest artisanal coffee and delicate pastries at Kamari Coffee.',
         'hero-tagline': 'A genuine coffee shop with an atmosphere<br>created by our beloved customers.',
         'contact-header': 'Visit Our Store',
@@ -22,7 +22,7 @@ const translations = {
         'form-error': 'Something went wrong. Please try again or email us directly.',
     },
     sv: {
-        title: 'Kamari Coffee | Premiumkaffe & Rosteri',
+        title: 'Kamari Coffee',
         description: 'Upplev det finaste hantverkskaffet och delikata bakverk på Kamari Coffee.',
         'hero-tagline': 'Ett genuint kafé med en atmosfär<br>skapad av våra kära kunder.',
         'contact-header': 'Besök Oss',
@@ -141,10 +141,8 @@ if (navbar) {
     window.addEventListener('scroll', () => {
         if (window.scrollY > 50) {
             navbar.style.padding = '1rem 5%';
-            navbar.style.background = 'rgba(13, 26, 13, 0.98)';
         } else {
             navbar.style.padding = '1.5rem 5%';
-            navbar.style.background = 'rgba(13, 26, 13, 0.80)';
         }
     }, { passive: true });
 }
